@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+
+body {
+    height: 100vh;
+    font-family: 'Prompt', sans-serif;
+    /*background-color: rgba(255, 129, 169, 0.2);*/
+    background: linear-gradient(
+            to bottom,
+            rgba(243, 129, 129, 0.5),
+            rgba(252, 227, 138, 0.5)
+    );
+    /*    background: linear-gradient(*/
+    /*            to bottom,*/
+    /*            rgba(243, 129, 129, 0.9),*/
+    /*            rgba(252, 227, 138, 0.9)*/
+    /*    );*/
+}
+
+.search-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.place-search {
+    display: flex;
+    align-items: center;
+}
+
+.search_btn {
+    text-decoration: none;
+    outline: none;
+    color: #e53140;
+    transition: all 0.3s ease-in-out;
+    margin-left: 15px;
+}
+
+.input-place-search {
+    height: 60px;
+    border-radius: 30px;
+}
+
+.search-title {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.search-title h1 {
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.search-title p {
+    color: white;
+    font-size: 15px;
+}
+
+.place-search-table {
+    margin-top: 30px;
+}
+
+.search-a {
+    text-decoration: none;
+    outline: none;
+    color: #e53140;
+    transition: all 0.3s ease-in-out;
+}
+
+th {
+    color: black;
+}

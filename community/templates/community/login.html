@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block html_body %}
+    <link rel="stylesheet" href="/static/css/pages/login.css">
+    <link rel="stylesheet" href="/static/css/pages/account.css">
+
+    <!-- logo
+    ================================================== -->
+    <header>
+        <div class="container">
+            <div class="navbar-header">
+                <a class="brand-logo" href="{% url 'home' %}">My Pet</a>
+            </div>
+        </div>
+    </header>
+    <!--/logo-->
+
+   <!-- logo
+    ================================================== -->
+     <div id="login_box">
+        <div class="welcome-header">
+            <h1 class="welcome-header__title">Welcome to</h1>
+            <h1 class="welcome-header__title" id="big_title">my pet</h1>
+            <p class="welcome-header__text">please put it your ID and Password</p>
+        </div>
+
+        <form action="home.html" method="post" class="login-form">
+            <input name="username" type="text" placeholder="ID" />
+            <input name="password" type="password" placeholder="Password" />
+            <input type="submit" value="Log In" />
+{#            <a href="#">Find My Pet Account or Password</a>#}
+            <a href="{% url 'community:account' %}">Create a new Account</a>
+        </form>
+    </div>
+    <!--/login_box-->
+
+{% endblock %}

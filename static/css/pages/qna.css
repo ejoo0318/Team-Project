@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap');
+/*body {*/
+/*    font-family: 'Prompt', sans-serif;*/
+/*}*/
+body {
+    height: 100vh;
+    font-family: 'Prompt', sans-serif;
+    background: linear-gradient(
+    to bottom,
+    rgba(243, 129, 129, 0.5),
+    rgba(252, 227, 138, 0.5)
+  );
+}
+#total-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -20px;
+}
+section {
+    width: 100%;
+    height: auto;
+}
+/*#cat {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    background-color: rgba(119, 178, 241, 0.5);*/
+/*    position: relative;*/
+/*}*/
+#dog {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(138, 43, 226, 0.5);
+    position: relative;
+}
+#cat_img {
+    width: 250px;
+    height: 250px;
+    margin: 50px;
+}
+#dog_img {
+    margin: 45px;
+}
+.tips-span-cat {
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    bottom: 70px;
+    position: absolute;
+    left: 90px;
+}
+.tips-span-dog {
+    color: white;
+    font-size: 30px;
+    font-weight: 700;
+    bottom: 65px;
+    position: absolute;
+    left: 116px;
+}
+.tips-table {
+    width: 70%;
+    margin-right: 100px;
+}
+th, td {
+    color: black;
+    font-size: 16px;
+}
+.tips-a {
+    text-decoration: none;
+    outline: none;
+    color: #e53140;
+    transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>MyPet</title>
+    <link rel="shortcut icon"sizes="17x17" href="/static/images/ico/발바닥파비콘.png">
+	<!-- css -->
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/materialdesignicons.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/jquery.mCustomScrollbar.min.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/prettyPhoto.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/unslider.css" />
+	<link rel="stylesheet" type="text/css" href="/static/css/pages/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css">
+    <!-- javascript -->
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/js/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.prettyPhoto.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.hoverdir.js"></script>
+	<script type="text/javascript" src="/static/js/modernizr.custom.97074.js"></script>
+	<script type="text/javascript" src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script type="text/javascript" src="/static/js/unslider-min.js"></script>
+	<script type="text/javascript" src="/static/js/template.js"></script>
+
+</head>
+<body>
+    <script>
+        function testa(link_url) {
+            document.location.href=link_url;
+        }
+    </script>
+
+
+    {% block html_body %}
+    {% endblock %}
+
+	<form action="" id="nino-searchForm">
+		<input type="text" placeholder="Search..." class="form-control nino-searchInput">
+		<i class="mdi mdi-close nino-close"></i>
+	</form>
+    <a href="#" id="nino-scrollToTop">Go to Top</a>
+
+</body>
+</html>

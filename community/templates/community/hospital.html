@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block html_body %}
+    <link rel="stylesheet" href="/static/css/pages/header.css">
+    <link rel="stylesheet" href="/static/css/pages/search.css">
+
+	<!-- Header
+    ================================================== -->
+	<header id="column-header">
+		<div id="nino-headerInner">
+			<nav id="nino-navbar" class="navbar navbar-default" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+							data-target="#nino-navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="{% url 'home' %}">My Pet</a>
+					</div>
+					<div class="nino-menuItem pull-right">
+						<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
+							<ul class="nav navbar-nav">
+{#                                <li><a href="{% url 'home' %}">Home</a>#}
+{#                                </li>#}
+                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
+                                <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
+                                <li class="active"><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
+                                <li><a href="#" onclick="testa('{% url 'community:shelter' %}')">Shelter</a></li>
+                            </ul>
+						</div>
+						<ul class="nino-iconsGroup nav navbar-nav">
+							<li><a href="#" onclick="testa('{% url 'community:login' %}')"><i class="mdi far fa-user nino-icon"></i></a></li>
+							<li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!--/#header-->
+
+    <!-- Title
+    ================================================== -->
+    <div class="container search-page">
+        <div class="search-title container">
+            <h1>동물 병원 검색</h1>
+            <p>주소를 입력하면 주변 동물병원을 알려드려요</p>
+        </div>
+        <!--/#Title-->
+
+        <!-- 검색
+    ================================================== -->
+        <div class="container place-search">
+            <input class="input-place-search form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            <div class="navbar-nav">
+                <div class="nav-item text-nowrap">
+                    <a class="search_btn" class="nav-link px-3" href="#"><i class="fas fa-3x fa-search"></i></a>
+                </div>
+            </div>
+        </div>
+        <!--/검색-->
+
+         <!-- list
+        ================================================== -->
+         <div class="place-search-table container">
+            <div class="tips-page tips-table">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Hospital Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Map</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td scope="row">no</td>
+                        <td><a class="search-a" href="#">hospital Name</a></td>
+                        <td>address</td>
+                        <td>map</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/list-->
+
+{% endblock %}
