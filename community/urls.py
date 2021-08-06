@@ -13,4 +13,7 @@ urlpatterns = [
     path('board/', views.board, name='board'),
     path('hospital/', views.hospital, name='hospital'),
     path('shelter/', views.shelter, name='shelter'),
+    path('tips/tips_create/', views.tips_create, name='tips'),
+    path('qna/qna_create/', views.qna_create, name='qna'),
+    path('board/board_create/', views.board_create, name='board'),
 ]

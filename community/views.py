@@ -27,3 +27,15 @@ def hospital(request):
 
 def shelter(request):
     return render(request, 'community/shelter.html')
+
+
+def tips_create(request):
+    return render(request, 'community/tips/tips_create')
+
+
+def qna_create(request):
+    return render(request, 'community/qna/qna_create')
+
+
+def board_create(request):
+    return render(request, 'community/board/board_create')
