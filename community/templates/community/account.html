@@ -27,11 +27,11 @@
 
         <form action="{% url 'community:login' %}" method="post" class="login-form">
             {% csrf_token %}
-            <input name="firstname" type="text" placeholder="First Name" />
-            <input name="lastname" type="text" placeholder="Last Name" />
             <input name="username" type="text" placeholder="ID" />
             <input name="password" type="password" placeholder="Password" />
-            <input type="submit" value="CREATE" />
+            <input name="password" type="password" placeholder="Password Check" />
+            <input name="email" type="email" placeholder="E-Mail" />
+            <input type="submit" value="Sign Up" />
 {#            <a href="#">Find My Pet Account or Password</a>#}
         </form>
     </div>
