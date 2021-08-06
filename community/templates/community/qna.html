@@ -44,10 +44,13 @@
 
    <!-- Title
     ================================================== -->
-    <div class="container board-title">
-{#        <img src="/static/images/tips/cat.png">#}
-        <h1 class="title-h1">QnA</h1>
-{#        <img src="/static/images/tips/dog.png">#}
+    <div class="container board-header">
+        <div class="board-title">
+            <h1 class="title-h1">QnA</h1>
+        </div>
+        <div class="board-post-btn">
+            <a href="{% url 'community:tips' %}" class="nino-btn nino-post-btn">NEW</a>
+        </div>
     </div>
     <!--/#Title-->
 

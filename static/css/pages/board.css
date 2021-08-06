@@ -8,22 +8,33 @@ body {
             rgba(243, 129, 129, 0.5),
             rgba(252, 227, 138, 0.5)
     );
-    /*  background: linear-gradient(*/
-    /*  to bottom,*/
-    /*  rgba(255, 129, 169, 0.5),*/
-    /*  rgba(255, 255, 255, 0.5)*/
-    /*);*/
+}
+
+.board-header {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.board-title {
+    position: relative;
+    margin-left: 10px;
+}
+
+.board-post-btn {
+    position: absolute;
+    right: 130px;
 }
 
 .title-h1 {
     font-weight: 700;
-    margin: 10px 0px 50px 30px;
+    /*margin: 10px 0px 0px 30px;*/
     font-size: 40px;
 }
 
 .tips-table {
     width: 100%;
-    /*margin-right: 100px;*/
+    margin-top: 45px;
 }
 
 th, td {
@@ -38,12 +49,13 @@ th, td {
     transition: all 0.3s ease-in-out;
 }
 
-img {
-    width: 60px;
-    height: 60px;
-    margin: 0px 10px;
-}
-
-.board-title {
-    display: flex;
+.nino-post-btn {
+    display: inline-block;
+    color: white;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    text-align: center;
+    border: 2px solid white;
+    font-size: 14px;
+    line-height: 100%;
 }

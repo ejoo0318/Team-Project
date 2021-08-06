@@ -11,7 +11,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#nino-navbar-collapse">
+                                data-target="#nino-navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -22,9 +22,10 @@
                     <div class="nino-menuItem pull-right">
                         <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
                             <ul class="nav navbar-nav">
-{#                                <li><a href="{% url 'home' %}">Home</a>#}
-{#                                </li>#}
-                                <li class="active"><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a></li>
+                                {#                                <li><a href="{% url 'home' %}">Home</a>#}
+                                {#                                </li>#}
+                                <li class="active"><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span
+                                        class="sr-only">(current)</span></a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
@@ -32,7 +33,8 @@
                             </ul>
                         </div>
                         <ul class="nino-iconsGroup nav navbar-nav">
-                            <li><a href="#" onclick="testa('{% url 'community:login' %}')"><i class="mdi far fa-user nino-icon"></i></a></li>
+                            <li><a href="#" onclick="testa('{% url 'community:login' %}')"><i
+                                    class="mdi far fa-user nino-icon"></i></a></li>
                             <li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
                         </ul>
                     </div>
@@ -43,17 +45,20 @@
     </header>
     <!--/#header-->
 
-       <!-- Title
-    ================================================== -->
-    <div class="container board-title">
-{#        <img src="/static/images/tips/cat.png">#}
-        <h1 class="title-h1">TIPS</h1>
-{#        <img src="/static/images/tips/dog.png">#}
+    <!-- Title
+ ================================================== -->
+    <div class="container board-header">
+        <div class="board-title">
+            <h1 class="title-h1">TIPS</h1>
+        </div>
+        <div class="board-post-btn">
+            <a href="{% url 'community:tips' %}" class="nino-btn nino-post-btn">NEW</a>
+        </div>
     </div>
     <!--/#Title-->
 
-     <!-- content
-    ================================================== -->
+    <!-- content
+   ================================================== -->
     <div class="container">
         <div class="tips-page tips-table">
             <table class="table table-hover">
@@ -79,6 +84,7 @@
                 </tbody>
             </table>
         </div>
+
     </div>
     <!--/#content-->
 
