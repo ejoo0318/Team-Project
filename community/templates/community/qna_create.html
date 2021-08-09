@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block html_body %}
+    <link rel="stylesheet" href="/static/css/pages/header.css">
+    <link rel="stylesheet" href="/static/css/pages/board.css">
+    <link rel="stylesheet" href="/static/css/pages/create.css">
+
+    <!-- Header
+    ================================================== -->
+    <header id="column-header">
+        <div id="nino-headerInner">
+            <nav id="nino-navbar" class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#nino-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'home' %}">My Pet</a>
+                    </div>
+                    <div class="nino-menuItem pull-right">
+                        <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                {#                                <li><a href="{% url 'home' %}">Home</a>#}
+                                {#                                </li>#}
+                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a>
+                                </li>
+                                <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
+                                <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
+                                <li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
+                                <li><a href="#" onclick="testa('{% url 'community:shelter' %}')">Shelter</a></li>
+                            </ul>
+                        </div>
+                        <ul class="nino-iconsGroup nav navbar-nav">
+                            {% if user.is_authenticated %}
+                                <li><a href="#" onclick="testa('{% url 'community:logout' %}')"><i
+                                        class="mdi fas fa-user-slash nino-icon"></i></a></li>
+                            {% else %}
+                                <li><a href="#" onclick="testa('{% url 'community:login' %}')"><i
+                                        class="mdi far fa-user nino-icon"></i></a></li>
+                            {% endif %}
+                            <li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--/#header-->
+
+
+    <!-- Title
+    ================================================== -->
+    <div class="container board-header">
+        <div class="board-title">
+            <h1 class="title-h1">New Post</h1>
+        </div>
+        <div class="board-post-btn">
+            <a href="javascript:history.back();" class="nino-btn nino-post-btn">BACK</a>
+        </div>
+    </div>
+    <!--/#Title-->
+
+
+    <!-- content
+   ================================================== -->
+    <div class="container">
+        <form>
+            <div id="boards-form">
+                <label for="title">Title : </label>
+                <input type="text" id="title" name="title">
+
+                <label for="author">Name : </label>
+                <input type="text" id="author" name="author">
+
+                <div class="file-box">
+                    <label for="avatar">Upload a Photo</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                </div>
+
+                <label for="content">Content : </label>
+                <textarea id="content" name="content" rows="5" cols="33"></textarea>
+            </div>
+
+            <div id="boards-create-btn">
+                <input class="post-btn" type="submit" value="POST">
+            </div>
+        </form>
+    </div>
+    <!--/#content-->
+
+
+{% endblock %}

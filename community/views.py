@@ -7,7 +7,6 @@ from .forms import BoardForm, BoardDetailForm
 from .models import Board, BoardComment, Qna, QnaComment, Tips, TipsComment
 
 
-
 # 로그인
 def login(request):
     if request.method == 'POST':
@@ -42,6 +41,7 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+
 ############## 글 목록 보는 기능 (자유/Tip/QnA 게시판 별로) ##############
 def tips(request):
     posts = Tips.objects.all().order_by('-id')
@@ -72,7 +72,7 @@ def tips_create(request):
     else:
         board_form = BoardForm()
 
-    return render(request, 'community/create.html', {
+    return render(request, 'community/tips_create.html', {
         'board_form': board_form
     })
 
@@ -90,7 +90,7 @@ def qna_create(request):
     else:
         board_form = BoardForm()
 
-    return render(request, 'community/create.html', {
+    return render(request, 'community/qna_create.html', {
         'board_form': board_form
     })
 
@@ -108,7 +108,7 @@ def board_create(request):
     else:
         board_form = BoardForm()
 
-    return render(request, 'community/create.html', {
+    return render(request, 'community/board_create.html', {
         'board_form': board_form
     })
 
@@ -120,7 +120,7 @@ def tips_detail(request, board_id):
     board_detail_form.show_board_detail()
     comments = post.comment_set.all().order_by('-id') # 댓글 정보
 
-    return render(request, 'community/detail.html',
+    return render(request, 'community/tips_detail.html',
                   {'board_detail_form': board_detail_form,
                    'comments': comments})
 
@@ -131,7 +131,7 @@ def qna_detail(request, board_id):
     board_detail_form.show_board_detail()
     comments = post.comment_set.all().order_by('-id') # 댓글 정보
 
-    return render(request, 'community/detail.html',
+    return render(request, 'community/qna_detail.html',
                   {'board_detail_form': board_detail_form,
                    'comments': comments})
 
@@ -142,7 +142,7 @@ def board_detail(request, board_id):
     board_detail_form.show_board_detail()
     comments = post.comment_set.all().order_by('-id') # 댓글 정보
 
-    return render(request, 'community/detail.html',
+    return render(request, 'community/board_detail.html',
                   {'board_detail_form': board_detail_form,
                    'comments': comments})
 
@@ -178,24 +178,24 @@ def shelter(request):
 
 
 # def tips_create(request):
-#     return render(request, 'community/create.html')
+#     return render(request, 'community/tips_create.html')
 #
 #
 # def qna_create(request):
-#     return render(request, 'community/create.html')
+#     return render(request, 'community/tips_create.html')
 #
 #
 # def board_create(request):
-#     return render(request, 'community/create.html')
+#     return render(request, 'community/tips_create.html')
 
 
 # def tips_detail(request):
-#     return render(request, 'community/detail.html')
+#     return render(request, 'community/tips_detail.html')
 #
 #
 # def qna_detail(request):
-#     return render(request, 'community/detail.html')
+#     return render(request, 'community/tips_detail.html')
 #
 #
 # def board_detail(request):
-#     return render(request, 'community/detail.html')
+#     return render(request, 'community/tips_detail.html')
