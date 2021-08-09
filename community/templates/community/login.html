@@ -23,11 +23,11 @@
             <p class="welcome-header__text">please put it your ID and Password</p>
         </div>
 
-        <form action="home.html" method="post" class="login-form">
+        <form method="POST" class="login-form">
+            {% csrf_token %}
             <input name="username" type="text" placeholder="ID" />
             <input name="password" type="password" placeholder="Password" />
             <input type="submit" value="Log In" />
-{#            <a href="#">Find My Pet Account or Password</a>#}
             <a href="{% url 'community:account' %}">Create a new Account</a>
         </form>
     </div>

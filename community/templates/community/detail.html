@@ -2,6 +2,7 @@
 {% block html_body %}
     <link rel="stylesheet" href="/static/css/pages/header.css">
     <link rel="stylesheet" href="/static/css/pages/board.css">
+    <link rel="stylesheet" href="/static/css/pages/create.css">
 
     <!-- Header
     ================================================== -->
@@ -24,8 +25,8 @@
                             <ul class="nav navbar-nav">
                                 {#                                <li><a href="{% url 'home' %}">Home</a>#}
                                 {#                                </li>#}
-                                <li class="active"><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span
-                                        class="sr-only">(current)</span></a></li>
+                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a>
+                                </li>
                                 <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
@@ -40,51 +41,86 @@
                     </div>
                 </div>
             </nav>
-
         </div>
     </header>
     <!--/#header-->
 
+
     <!-- Title
- ================================================== -->
+    ================================================== -->
     <div class="container board-header">
         <div class="board-title">
-            <h1 class="title-h1">TIPS</h1>
+            <h1 class="title-h1">DETAIL</h1>
         </div>
         <div class="board-post-btn">
-            <a href="{% url 'community:tips_create' %}" class="nino-btn nino-post-btn">NEW</a>
+            <a href="{% url 'community:tips' %}" class="nino-btn nino-post-btn">BACK</a>
         </div>
     </div>
     <!--/#Title-->
 
-    <!-- content
+
+    <!-- content- board detail
    ================================================== -->
     <div class="container">
-        <div class="tips-page tips-table">
+        <form>
+            <div id="boards-form">
+                <label for="title">Title : </label>
+                <input type="text" id="title" name="title" disabled>
+
+                <label for="author">Name : </label>
+                <input type="text" id="author" name="author" disabled>
+
+                <label for="content">Content : </label>
+                <textarea id="content" name="content" rows="5" cols="33" disabled></textarea>
+            </div>
+            <div id="boards-detail-btn">
+                <button class="like-btn" type="button"><i class="far fa-heart fa-2x"></i><span>123</span></button>
+                <button type="button"><i class="far fa-edit fa-2x"></i><span>EDIT</span></button>
+                <button type="button"><i class="far fa-trash-alt fa-2x"></i><span>DEL</span></button>
+            </div>
+        </form>
+    </div>
+    <!--/#content-->
+
+    <!-- content- comment
+   ================================================== -->
+    <div class="container">
+        <div class="comment-table container">
             <table class="table table-hover">
-                <thead class="thead-dark">
+                <thead>
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Content</th>
-                    <th scope="col">Comment</th>
-                    <th scope="col">Like</th>
+                    <th scope="col">Delete</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">no</th>
-                    <td><a class="tips-a" href="{% url 'community:tips_detail' %}">title</a></td>
-                    <td>author</td>
+                    <td>no</td>
+                    <td>name</td>
                     <td>content</td>
-                    <td>123</td>
-                    <td>123</td>
+                    <td>
+                        <button class="del-btn" type="button">del</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
         </div>
+
+        <div class="comment-box">
+            <div>
+                <label for="c_name">Name</label>
+                <input type="text" id="c_name">
+            </div>
+            <div class="input-box">
+                <label for="c_content">Content</label>
+                <input type="text" id="c_content">
+            </div>
+            <div>
+                <button type="button" id="comment_create_btn">Submit</button>
+            </div>
+        </div>
     </div>
     <!--/#content-->
-
 {% endblock %}

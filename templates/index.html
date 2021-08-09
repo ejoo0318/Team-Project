@@ -3,392 +3,401 @@
 
 <head>
     <meta charset="UTF-8">
-	<title>MyPet</title>
-    <link rel="shortcut icon"sizes="17x17" href="/static/images/ico/발바닥파비콘.png">
-	<!-- css -->
-	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/materialdesignicons.min.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/jquery.mCustomScrollbar.min.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/prettyPhoto.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/unslider.css" />
-	<link rel="stylesheet" type="text/css" href="/static/css/pages/index.css" />
+    <title>MyPet</title>
+    <link rel="shortcut icon" sizes="17x17" href="/static/images/ico/발바닥파비콘.png">
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/materialdesignicons.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery.mCustomScrollbar.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/prettyPhoto.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/unslider.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/pages/index.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css">
-    	<!-- javascript -->
-	<script type="text/javascript" src="/static/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/static/js/isotope.pkgd.min.js"></script>
-	<script type="text/javascript" src="/static/js/jquery.prettyPhoto.js"></script>
-	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/static/js/jquery.hoverdir.js"></script>
-	<script type="text/javascript" src="/static/js/modernizr.custom.97074.js"></script>
-	<script type="text/javascript" src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script type="text/javascript" src="/static/js/unslider-min.js"></script>
-	<script type="text/javascript" src="/static/js/template.js"></script>
+    <!-- javascript -->
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.hoverdir.js"></script>
+    <script type="text/javascript" src="/static/js/modernizr.custom.97074.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="/static/js/unslider-min.js"></script>
+    <script type="text/javascript" src="/static/js/template.js"></script>
 </head>
 
 <script>
     function testa(link_url) {
-        document.location.href=link_url;
+        document.location.href = link_url;
     }
 </script>
 <body data-target="#nino-navbar" data-spy="scroll">
 
-	<!-- Header
-    ================================================== -->
-	<header id="nino-header">
-		<div id="nino-headerInner">
-			<nav id="nino-navbar" class="navbar navbar-default" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-							data-target="#nino-navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="{% url 'home' %}">My Pet</a>
-					</div>
-					<div class="nino-menuItem pull-right">
-						<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-							<ul class="nav navbar-nav">
-								<li class="active"><a href="#nino-header">Home<span class="sr-only">(current)</span></a>
-								</li>
-                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips</a></li>
-								<li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
-								<li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
-								<li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
-								<li><a href="#" onclick="testa('{% url 'community:shelter' %}')">Shelter</a></li>
-							</ul>
-						</div>
-						<ul class="nino-iconsGroup nav navbar-nav">
-							<li><a href="#" onclick="testa('{% url 'community:login' %}')"><i class="mdi far fa-user nino-icon"></i></a></li>
-                            <li><a href="#" onclick="testa('{% url 'home' %}')"><i class="mdi fas fa-user-slash nino-icon"></i></a></li>
-							<li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-
-			<section id="nino-slider" class="carousel slide container" data-ride="carousel">
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
-					<div class="item active">
-						<h2 class="nino-sectionHeading">
-							<span class="nino-subHeading">My Pet Community</span>
-							Welcome <br>to MyPet
-						</h2>
-					</div>
-				</div>
-				<ol class="carousel-indicators clearfix">
-				</ol>
-			</section>
-		</div>
-	</header>
-	<!--/#header-->
-
-	<!-- Tips
-    ================================================== -->
-	<section id="nino-tips">
-		<div class="container">
-			<h2 class="nino-sectionHeading">
-				<span class="nino-subHeading">Popular Posts</span>
-				TIPS
-			</h2>
-			<div class="sectionContent">
-				<div class="row">
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-				</div>
-                <div class="more_btn">
-                    <a href="{% url 'community:tips' %}" class="nino-btn">More</a>
+<!-- Header
+================================================== -->
+<header id="nino-header">
+    <div id="nino-headerInner">
+        <nav id="nino-navbar" class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#nino-navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'home' %}">My Pet</a>
                 </div>
-			</div>
-		</div>
-	</section>
-	<!--/#nino-tips-->
-
-	<!-- QnA
-    ================================================== -->
-	<section id="nino-qna">
-		<div class="container">
-			<h2 class="nino-sectionHeading">
-				<span class="nino-subHeading">Popular Posts</span>
-				Question And Answer
-			</h2>
-			<div class="sectionContent">
-				<div class="row">
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-				</div>
-                <div class="more_btn">
-                    <a href="{% url 'community:qna' %}" class="nino-btn">More</a>
+                <div class="nino-menuItem pull-right">
+                    <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#nino-header">Home<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips</a></li>
+                            <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
+                            <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
+                            <li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
+                            <li><a href="#" onclick="testa('{% url 'community:shelter' %}')">Shelter</a></li>
+                        </ul>
+                    </div>
+                    <ul class="nino-iconsGroup nav navbar-nav">
+                        {% if user.is_authenticated %}
+                            <li><a href="#" onclick="testa('{% url 'community:logout' %}')"><i
+                                    class="mdi fas fa-user-slash nino-icon"></i></a></li>
+                        {% else %}
+                            <li><a href="#" onclick="testa('{% url 'community:login' %}')"><i
+                                    class="mdi far fa-user nino-icon"></i></a></li>
+                        {% endif %}
+                        <li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
+                    </ul>
                 </div>
-			</div>
-		</div>
-	</section>
-    <!--/#nino-qna-->
+            </div>
+        </nav>
 
-	<!-- Board
-    ================================================== -->
-	<section id="nino-board">
-		<div class="container">
-			<h2 class="nino-sectionHeading">
-				<span class="nino-subHeading">Popular Posts</span>
-				BOARD
-			</h2>
-			<div class="sectionContent">
-				<div class="row">
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<article>
-							<div class="articleThumb">
-								<a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
-							</div>
-							<h3 class="articleTitle"><a href="">제목</a></h3>
-							<p class="articleDesc">
-								게시글 내용 앞 부분? 요약??
-							</p>
-							<div class="articleMeta">
-								<a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-								<a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
-							</div>
-						</article>
-					</div>
-				</div>
-                <div class="more_btn">
-                    <a href="{% url 'community:board' %}" class="nino-btn">More</a>
+        <section id="nino-slider" class="carousel slide container" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <h2 class="nino-sectionHeading">
+                        <span class="nino-subHeading">My Pet Community</span>
+                        Welcome <br>to MyPet
+                    </h2>
                 </div>
-			</div>
-		</div>
-	</section>
-	<!--/#nino-Board-->
+            </div>
+            <ol class="carousel-indicators clearfix">
+            </ol>
+        </section>
+    </div>
+</header>
+<!--/#header-->
 
-    <!-- 동물관련명언
-    ================================================== -->
-    	<section class="nino-testimonial">
-		<div class="container">
-			<div class="nino-testimonialSlider">
-				<ul>
-					<li>
-						<div layout="row">
-							<div class="nino-symbol fsr">
-								<i class="mdi mdi-comment-multiple-outline nino-icon"></i>
-							</div>
-							<div>
-								<p class="quote">"The first thing a person who pursues a just life should follow is to prohibit animal cruelty."</p>
-								<span class="name">Lev Tolstoy</span>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div layout="row">
-							<div class="nino-symbol fsr">
-								<i class="mdi mdi-wechat nino-icon"></i>
-							</div>
-							<div>
-								<p class="quote">"Animals are such agreeable friends they ask no questions, they pass no criticisms."</p>
-								<span class="name">George Eliot</span>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div layout="row">
-							<div class="nino-symbol fsr">
-								<i class="mdi mdi-message-text-outline nino-icon"></i>
-							</div>
-							<div>
-								<p class="quote">"The greatness of a nation and its moral progress can be judged by the way its animals are treated."</p>
-								<span class="name">Mahatama Gandhi</span>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-	<!--명언쓰-->
+<!-- Tips
+================================================== -->
+<section id="nino-tips">
+    <div class="container">
+        <h2 class="nino-sectionHeading">
+            <span class="nino-subHeading">Popular Posts</span>
+            TIPS
+        </h2>
+        <div class="sectionContent">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="more_btn">
+                <a href="{% url 'community:tips' %}" class="nino-btn">More</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#nino-tips-->
 
-	<!-- Map-Hospital
-    ================================================== -->
-	<section id="nino-hospital-map" class="nino-map">
-		<div class="container">
-			<div class="container">
-				<a href="{% url 'community:hospital' %}"><h2 class="nino-sectionHeading">
-					<i class="mdi mdi-map-marker nino-icon"></i>
-					<span class="text">Search Hospital</span>
-					<span class="text" style="display: none;">Close map</span>
-				</h2></a>
-				<div class="mapWrap">
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d79466.26604960626!2d-0.19779784176715043!3d51.50733004537892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!3m2!1d51.5073509!2d-0.1277583!5e0!3m2!1sen!2s!4v1469206441744"
-						width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-	</section>
-    <!--/#Map-Hospital-->
+<!-- QnA
+================================================== -->
+<section id="nino-qna">
+    <div class="container">
+        <h2 class="nino-sectionHeading">
+            <span class="nino-subHeading">Popular Posts</span>
+            Question And Answer
+        </h2>
+        <div class="sectionContent">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="more_btn">
+                <a href="{% url 'community:qna' %}" class="nino-btn">More</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#nino-qna-->
+
+<!-- Board
+================================================== -->
+<section id="nino-board">
+    <div class="container">
+        <h2 class="nino-sectionHeading">
+            <span class="nino-subHeading">Popular Posts</span>
+            BOARD
+        </h2>
+        <div class="sectionContent">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <article>
+                        <div class="articleThumb">
+                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+                        </div>
+                        <h3 class="articleTitle"><a href="">제목</a></h3>
+                        <p class="articleDesc">
+                            게시글 내용 앞 부분? 요약??
+                        </p>
+                        <div class="articleMeta">
+                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
+                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="more_btn">
+                <a href="{% url 'community:board' %}" class="nino-btn">More</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#nino-Board-->
+
+<!-- 동물관련명언
+================================================== -->
+<section class="nino-testimonial">
+    <div class="container">
+        <div class="nino-testimonialSlider">
+            <ul>
+                <li>
+                    <div layout="row">
+                        <div class="nino-symbol fsr">
+                            <i class="mdi mdi-comment-multiple-outline nino-icon"></i>
+                        </div>
+                        <div>
+                            <p class="quote">"The first thing a person who pursues a just life should follow is to
+                                prohibit animal cruelty."</p>
+                            <span class="name">Lev Tolstoy</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div layout="row">
+                        <div class="nino-symbol fsr">
+                            <i class="mdi mdi-wechat nino-icon"></i>
+                        </div>
+                        <div>
+                            <p class="quote">"Animals are such agreeable friends they ask no questions, they pass no
+                                criticisms."</p>
+                            <span class="name">George Eliot</span>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div layout="row">
+                        <div class="nino-symbol fsr">
+                            <i class="mdi mdi-message-text-outline nino-icon"></i>
+                        </div>
+                        <div>
+                            <p class="quote">"The greatness of a nation and its moral progress can be judged by the way
+                                its animals are treated."</p>
+                            <span class="name">Mahatama Gandhi</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--명언쓰-->
+
+<!-- Map-Hospital
+================================================== -->
+<section id="nino-hospital-map" class="nino-map">
+    <div class="container">
+        <div class="container">
+            <a href="{% url 'community:hospital' %}"><h2 class="nino-sectionHeading">
+                <i class="mdi mdi-map-marker nino-icon"></i>
+                <span class="text">Search Hospital</span>
+                <span class="text" style="display: none;">Close map</span>
+            </h2></a>
+            <div class="mapWrap">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d79466.26604960626!2d-0.19779784176715043!3d51.50733004537892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!3m2!1d51.5073509!2d-0.1277583!5e0!3m2!1sen!2s!4v1469206441744"
+                        width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#Map-Hospital-->
 
 
-	<!-- Map-Shelter
-    ================================================== -->
-	<section id="nino-shelter-map" class="nino-map">
-		<div class="container">
-			<div class="container">
-				<a href="{% url 'community:shelter' %}"><h2 class="nino-sectionHeading">
-					<i class="mdi mdi-map-marker nino-icon"></i>
-					<span class="text">Search Shelter</span>
-					<span class="text" style="display: none;">Close map</span>
-				</h2></a>
-				<div class="mapWrap">
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d79466.26604960626!2d-0.19779784176715043!3d51.50733004537892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!3m2!1d51.5073509!2d-0.1277583!5e0!3m2!1sen!2s!4v1469206441744"
-						width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-	</section>
-    <!--/#Map-Hospital-->
+<!-- Map-Shelter
+================================================== -->
+<section id="nino-shelter-map" class="nino-map">
+    <div class="container">
+        <div class="container">
+            <a href="{% url 'community:shelter' %}"><h2 class="nino-sectionHeading">
+                <i class="mdi mdi-map-marker nino-icon"></i>
+                <span class="text">Search Shelter</span>
+                <span class="text" style="display: none;">Close map</span>
+            </h2></a>
+            <div class="mapWrap">
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d79466.26604960626!2d-0.19779784176715043!3d51.50733004537892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!3m2!1d51.5073509!2d-0.1277583!5e0!3m2!1sen!2s!4v1469206441744"
+                        width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#Map-Hospital-->
 
 
-	<!-- Footer
-    ================================================== -->
-	<footer id="footer">
-		<div class="container">
-			<div class="nino-copyright">Copyright &copy; 2016 <a target="_blank" href="http://www.ninodezign.com/"
-					title="Ninodezign.com - Top quality open source resources for web developer and web designer">Ninodezign.com</a>.
-				All Rights Reserved. <br /> Develop by 남동현 박하경 조용호 이은주 </div>
-		</div>
-	</footer>
-	<!--/#footer-->
+<!-- Footer
+================================================== -->
+<footer id="footer">
+    <div class="container">
+        <div class="nino-copyright">Copyright &copy; 2016 <a target="_blank" href="http://www.ninodezign.com/"
+                                                             title="Ninodezign.com - Top quality open source resources for web developer and web designer">Ninodezign.com</a>.
+            All Rights Reserved. <br/> Develop by 남동현 박하경 조용호 이은주
+        </div>
+    </div>
+</footer>
+<!--/#footer-->
 
 
-	<!-- Search Form - Display when click magnify icon in menu
-    ================================================== -->
-	<form action="" id="nino-searchForm">
-		<input type="text" placeholder="Search..." class="form-control nino-searchInput">
-		<i class="mdi mdi-close nino-close"></i>
-	</form>
-	<!--/#nino-searchForm-->
+<!-- Search Form - Display when click magnify icon in menu
+================================================== -->
+<form action="" id="nino-searchForm">
+    <input type="text" placeholder="Search..." class="form-control nino-searchInput">
+    <i class="mdi mdi-close nino-close"></i>
+</form>
+<!--/#nino-searchForm-->
 
 
-	<!-- Scroll to top
-    ================================================== -->
-	<a href="#" id="nino-scrollToTop">Go to Top</a>
+<!-- Scroll to top
+================================================== -->
+<a href="#" id="nino-scrollToTop">Go to Top</a>
 
 </body>
 

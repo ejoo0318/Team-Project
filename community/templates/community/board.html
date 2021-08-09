@@ -53,7 +53,7 @@
             <h1 class="title-h1">Board</h1>
         </div>
         <div class="board-post-btn">
-            <a href="{% url 'community:tips' %}" class="nino-btn nino-post-btn">NEW</a>
+            <a href="{% url 'community:board_create' %}" class="nino-btn nino-post-btn">NEW</a>
         </div>
     </div>
     <!--/#Title-->
@@ -76,7 +76,7 @@
                 <tbody>
                 <tr>
                     <th scope="row">no</th>
-                    <td><a class="tips-a" href="#">title</a></td>
+                    <td><a class="tips-a" href="{% url 'community:board_detail' %}">title</a></td>
                     <td>author</td>
                     <td>content</td>
                     <td>123</td>

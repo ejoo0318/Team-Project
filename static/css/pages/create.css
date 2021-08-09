@@ -1,0 +1,159 @@
+/*body {*/
+/*    height: 100vh;*/
+/*}*/
+#boards-form {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 20px;
+}
+
+#boards-form input {
+    border: none;
+    height: 40px;
+    border-radius: 15px;
+    outline-style: none;
+    padding: 1em 1em;
+    margin-bottom: 15px;
+}
+
+#boards-form textarea {
+    border: none;
+    border-radius: 15px;
+    outline-style: none;
+    padding: 1em 1em;
+}
+
+.file-box {
+    margin-bottom: 15px;
+}
+
+.file-box label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: rgba(243, 129, 129, 0.9);
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
+
+/* 파일 필드 숨기기 */
+.file-box input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.post-btn {
+    display: inline-block;
+    color: white;
+    text-transform: uppercase;
+    padding: 13px 30px;
+    text-align: center;
+    border: 2px solid white;
+    font-size: 14px;
+    line-height: 100%;
+    background-color: rgba(243, 129, 129, 0.9);
+}
+
+.post-btn:hover {
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+    color: rgb(243, 129, 129);
+    border: 2px solid rgb(243, 129, 129);
+}
+
+#boards-create-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* detail css*/
+#boards-form input:disabled {
+    background-color: whitesmoke;
+}
+
+#boards-form textarea:disabled {
+    background-color: whitesmoke;
+}
+
+#boards-detail-btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#boards-detail-btn button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(243, 129, 129, 0.8);
+}
+
+.like-btn {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.like-btn span {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+/* comment */
+.comment-table {
+    margin-top: 30px;
+    width: 90%;
+}
+
+.comment-table table {
+    text-align: center;
+}
+
+tr th {
+    text-align: center;
+}
+
+.del-btn {
+    border: 2px solid rgb(243, 129, 129);
+    color: white;
+    background-color: rgb(243, 129, 129);
+    text-align: center;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.comment-box {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
+
+.comment-box input {
+    border: none;
+    border-radius: 5px;
+    outline-style: none;
+    padding: .5em .5em;
+    margin-left: 10px;
+}
+.input-box input {
+    width: 430px;
+}
+.comment-box button {
+    border: 2px solid white;
+    color: rgb(243, 129, 129);
+    background-color: white;
+    text-align: center;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
