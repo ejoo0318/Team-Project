@@ -86,4 +86,5 @@ def qna_detail(request):
 
 
 def board_detail(request):
-    return render(request, 'community/detail.html')
+    return render(request, 'community/detail.html'
+                  )
