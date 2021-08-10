@@ -63,7 +63,7 @@
     </div>
     <!--/#Title-->
 
-    <!-- content
+    <!-- content 자유게시판 리스트
    ================================================== -->
     <div class="container">
         <div class="tips-page tips-table">
@@ -78,16 +78,16 @@
                     <th scope="col">Like</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">no</th>
-                    <td><a class="tips-a" href="{% url 'community:board_detail' %}">title</a></td>
-                    <td>author</td>
-                    <td>content</td>
-                    <td>123</td>
-                    <td>123</td>
-                </tr>
-                </tbody>
+                {% for post in posts %}
+                    <tr>
+                        <th scope="row">{{ post.id }}</th>
+                        <td><a href="/community/{{ post.id }}/board_detail/">{{ post.b_title }}</a></td>
+                        <td>{{ post.b_author }}</td>
+                        <td>{{ post.b_date }}</td>
+                        <td>{{ post.b_comment_count }}</td>
+                        <td>{{ post.b_like_count }}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
     </div>

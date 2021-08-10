@@ -23,8 +23,6 @@
                     <div class="nino-menuItem pull-right">
                         <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                {#                                <li><a href="{% url 'home' %}">Home</a>#}
-                                {#                                </li>#}
                                 <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a>
                                 </li>
                                 <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
@@ -64,10 +62,11 @@
     <!--/#Title-->
 
 
-    <!-- content
+    <!-- content 자유게시판 새 글작성
    ================================================== -->
     <div class="container">
-        <form>
+        <form action="{% url 'community:board_create' %}" method="POST">
+            {% csrf_token %}
             <div id="boards-form">
                 <label for="title">Title : </label>
                 <input type="text" id="title" name="title">
@@ -85,7 +84,7 @@
             </div>
 
             <div id="boards-create-btn">
-                <input class="post-btn" type="submit" value="POST">
+                <button class="post-btn" type="submit">POST</button>
             </div>
         </form>
     </div>
