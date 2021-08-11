@@ -14,6 +14,24 @@ import requests
 import json
 
 
+# id값이 정렬안됨
+# 수정버튼작동 수정등록버튼만들기
+# 댓글
+
+def home(request):
+    posts_board = Board.objects.all().order_by('-b_date')
+    # max_num = max(Board.post_id)
+    posts_tips = Tips.objects.all().order_by('-b_date')
+    posts_qna = Qna.objects.all().order_by('-b_date')
+
+    return render(request, 'index.html', {
+        'posts_board': posts_board,
+        'posts_tips': posts_tips,
+        'posts_qna': posts_qna
+        # 'max_num': max_num
+    })
+
+
 # 로그인
 def login(request):
     if request.method == 'POST':
@@ -68,7 +86,6 @@ def board(request):
 # # 게시판 새 글작성
 @login_required(login_url="/community/login/")
 def tips_create(request):
-
     if request.method == 'POST':
         author = request.user
         title = request.POST['title']
@@ -86,7 +103,6 @@ def tips_create(request):
 
 @login_required(login_url="/community/login/")
 def qna_create(request):
-
     if request.method == 'POST':
         author = request.user
         title = request.POST['title']
@@ -104,7 +120,6 @@ def qna_create(request):
 
 @login_required(login_url="/community/login/")
 def board_create(request):
-
     if request.method == 'POST':
         author = request.user
         title = request.POST['title']
@@ -184,15 +199,21 @@ def delete_board(request, post_id):
     return redirect('community:board')
 
 
+# 수정
+# def b_edit(request, post_id):
+#     posts = get_object_or_404(Board, pk=post_id)
+#     board_form = BoardForm(instance=posts)
+#     return render(request, 'bbs/edit.html', {'board_form': board_form, 'post_id': post_id})
+
+
 def hospital(request):
     return render(request, 'community/hospital.html')
 
 
 def shelter(request):
-
-#    a_serch = animal_serch.object.all()
-#    context = {'animal_serch': animal_serch}
-#    return render(request, 'animal/animal.html', context)
+    #    a_serch = animal_serch.object.all()
+    #    context = {'animal_serch': animal_serch}
+    #    return render(request, 'animal/animal.html', context)
 
     url = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic'
 
@@ -234,10 +255,10 @@ def shelter(request):
 
     context = {'df2': result}
 
-#    return HttpResponse(json.dumps(df2, ensure_ascii=False),
-#                    content_type="application/json")
+    #    return HttpResponse(json.dumps(df2, ensure_ascii=False),
+    #                    content_type="application/json")
 
-#    return HttpResponse(df2,
-#                    content_type="application/json; charset=utf8")
+    #    return HttpResponse(df2,
+    #                    content_type="application/json; charset=utf8")
 
     return render(request, 'community/shelter.html', context)

@@ -37,3 +37,14 @@ function board_delete_click() {
         document.location.href = '/community/' + $('#post_id').text() + '/delete_board/'
     }
 }
+//수정
+// $('#edit').on('click',function(event) {
+//    $("#title, #author, #content").removeAttr('disabled');
+// }  )
+
+$(function (event) {
+    $('#edit_btn').on('click', function (event) {
+        $("#title, #author, #content").removeAttr('disabled');
+        // document.location.href = '/bbs/'+ $('#post_id').text() + '/b_edit/'
+    })
+})

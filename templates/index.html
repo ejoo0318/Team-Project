@@ -104,15 +104,13 @@
                 <div class="col-md-4 col-sm-4">
                     <article>
                         <div class="articleThumb">
-                            <a href="#"><img src="/static/images/our-blog/img-1.jpg" alt=""></a>
+
+                            <a href="/community/9/board_detail/"><img src="{{ posts_board.0.b_photo.url }}" alt=""></a>
                         </div>
-                        <h3 class="articleTitle"><a href="">제목</a></h3>
-                        <p class="articleDesc">
-                            게시글 내용 앞 부분? 요약??
-                        </p>
+                        <h3 class="articleTitle"><a href="">{{ posts_board.0 }}</a></h3>
+
                         <div class="articleMeta">
-                            <a href="#"><i class="mdi mdi-eye nino-icon"></i> 543</a>
-                            <a href="#"><i class="mdi mdi-comment-multiple-outline nino-icon"></i> 15</a>
+                            <a href="#"><i class="far fa-heart fa-xs"></i> {{ posts_board.0.b_like_count }}</a>
                         </div>
                     </article>
                 </div>
