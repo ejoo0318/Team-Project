@@ -10,6 +10,7 @@ class Board(models.Model):
     b_date = models.DateTimeField(auto_now=True)
     b_comment_count = models.IntegerField(default=0)
     b_like_count = models.IntegerField(default=0)
+    b_photo = models.ImageField(blank=True)
 
     # b_author = models.ForeignKey(Member, on_delete=models.CASCADE) -> 유저 연결
 
@@ -36,6 +37,7 @@ class Qna(models.Model):
     b_date = models.DateTimeField(auto_now=True)  # 글 수정하면 수정한 시각으로 갱신됨
     b_comment_count = models.IntegerField(default=0)
     b_like_count = models.IntegerField(default=0)
+    b_photo = models.ImageField(blank=True)
 
     # b_author = models.ForeignKey(Member, on_delete=models.CASCADE) -> 유저 연결
 
@@ -63,6 +65,7 @@ class Tips(models.Model):
     b_date = models.DateTimeField(auto_now=True)
     b_comment_count = models.IntegerField(default=0)
     b_like_count = models.IntegerField(default=0)
+    b_photo = models.ImageField(blank=True)
 
     def __str__(self):
         return self.b_title

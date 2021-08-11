@@ -55,7 +55,7 @@
     ================================================== -->
     <div class="container board-header">
         <div class="board-title">
-            <h1 class="title-h1">New Post</h1>
+            <h1 class="title-h1">TIPS New Post</h1>
         </div>
         <div class="board-post-btn">
             <a href="javascript:history.back();" class="nino-btn nino-post-btn">BACK</a>
@@ -67,7 +67,10 @@
     <!-- content
    ================================================== -->
     <div class="container">
-        <form>
+        <form action="{% url 'community:tips_create' %}"
+              method="POST"
+              enctype="multipart/form-data">
+            {% csrf_token %}
             <div id="boards-form">
                 <label for="title">Title : </label>
                 <input type="text" id="title" name="title">
@@ -76,8 +79,8 @@
                 <input type="text" id="author" name="author">
 
                 <div class="file-box">
-                    <label for="avatar">Upload a Photo</label>
-                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                    <label for="photo">Upload a Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/png, image/jpeg">
                 </div>
 
                 <label for="content">Content : </label>
@@ -85,7 +88,7 @@
             </div>
 
             <div id="boards-create-btn">
-                <input class="post-btn" type="submit" value="POST">
+                <button class="post-btn" type="submit">POST</button>
             </div>
         </form>
     </div>

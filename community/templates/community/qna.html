@@ -3,53 +3,54 @@
     <link rel="stylesheet" href="/static/css/pages/header.css">
     <link rel="stylesheet" href="/static/css/pages/board.css">
 
-	<!-- Header
+    <!-- Header
     ================================================== -->
-	<header id="column-header">
-		<div id="nino-headerInner">
-			<nav id="nino-navbar" class="navbar navbar-default" role="navigation">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-							data-target="#nino-navbar-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="{% url 'home' %}">My Pet</a>
-					</div>
-					<div class="nino-menuItem pull-right">
-						<div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-							<ul class="nav navbar-nav">
-{#                                <li><a href="{% url 'home' %}">Home</a>#}
-{#                                </li>#}
-                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a></li>
+    <header id="column-header">
+        <div id="nino-headerInner">
+            <nav id="nino-navbar" class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#nino-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'home' %}">My Pet</a>
+                    </div>
+                    <div class="nino-menuItem pull-right">
+                        <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                {#                                <li><a href="{% url 'home' %}">Home</a>#}
+                                {#                                </li>#}
+                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a>
+                                </li>
                                 <li class="active"><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:shelter' %}')">Shelter</a></li>
                             </ul>
-						</div>
-						<ul class="nino-iconsGroup nav navbar-nav">
-							{% if user.is_authenticated %}
+                        </div>
+                        <ul class="nino-iconsGroup nav navbar-nav">
+                            {% if user.is_authenticated %}
                                 <li><a href="#" onclick="testa('{% url 'community:logout' %}')"><i
                                         class="mdi fas fa-user-slash nino-icon"></i></a></li>
                             {% else %}
                                 <li><a href="#" onclick="testa('{% url 'community:login' %}')"><i
                                         class="mdi far fa-user nino-icon"></i></a></li>
                             {% endif %}
-							<li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<!--/#header-->
+                            <li><a href="#" class="nino-search"><i class="mdi mdi-magnify nino-icon"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!--/#header-->
 
-   <!-- Title
-    ================================================== -->
+    <!-- Title
+     ================================================== -->
     <div class="container board-header">
         <div class="board-title">
             <h1 class="title-h1">QnA</h1>
@@ -60,8 +61,8 @@
     </div>
     <!--/#Title-->
 
-     <!-- content
-    ================================================== -->
+    <!-- content
+   ================================================== -->
     <div class="container">
         <div class="tips-page tips-table">
             <table class="table table-hover">
@@ -76,14 +77,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">no</th>
-                    <td><a class="tips-a" href="{% url 'community:qna_detail' %}">title</a></td>
-                    <td>author</td>
-                    <td>content</td>
-                    <td>123</td>
-                    <td>123</td>
-                </tr>
+                {% for post in posts %}
+                    <tr>
+                        <th scope="row">{{ post.id }}</th>
+                        <td><a href="/community/{{ post.id }}/qna_detail/">{{ post.b_title }}</a></td>
+                        <td>{{ post.b_author }}</td>
+                        <td>{{ post.b_date }}</td>
+                        <td>{{ post.b_comment_count }}</td>
+                        <td>{{ post.b_like_count }}</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>

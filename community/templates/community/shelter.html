@@ -21,14 +21,16 @@
                     </div>
                     <div class="nino-menuItem pull-right">
                         <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
-                           <ul class="nav navbar-nav">
-{#                                <li><a href="{% url 'home' %}">Home</a>#}
-{#                                </li>#}
-                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a></li>
+                            <ul class="nav navbar-nav">
+                                {#                                <li><a href="{% url 'home' %}">Home</a>#}
+                                {#                                </li>#}
+                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a>
+                                </li>
                                 <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
-                                <li class="active"><a href="#" onclick="testa('{% url 'community:shelter' %}')">Shelter</a></li>
+                                <li class="active"><a href="#"
+                                                      onclick="testa('{% url 'community:shelter' %}')">Shelter</a></li>
                             </ul>
                         </div>
                         <ul class="nino-iconsGroup nav navbar-nav">
@@ -56,46 +58,96 @@
             <p>주소를 입력하면 주변 보호소를 알려드려요</p>
         </div>
     </div>
-         <!--/#Title-->
+    <!--/#Title-->
 
-        <!-- 검색
-        ================================================== -->
-        <div class="container place-search">
-            <input class="input-place-search form-control form-control-dark w-100" type="text" placeholder="Search"
-                   aria-label="Search">
-            <div class="navbar-nav">
-                <div class="nav-item text-nowrap">
-                    <a class="search_btn" class="nav-link px-3" href="#"><i class="fas fa-3x fa-search"></i></a>
-                </div>
-            </div>
-        </div>
-        <!--/검색-->
+    <!-- 검색
+    ================================================== -->
+    {#        <div class="container place-search">#}
+    {#            <input class="input-place-search form-control form-control-dark w-100" type="text" placeholder="Search"#}
+    {#                   aria-label="Search">#}
+    {#            <div class="navbar-nav">#}
+    {#                <div class="nav-item text-nowrap">#}
+    {#                    <a class="search_btn" class="nav-link px-3" href="#"><i class="fas fa-3x fa-search"></i></a>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    <!--/검색-->
 
-        <!-- list
-        ================================================== -->
-        <div class="place-search-table container">
-            <div class="tips-page tips-table">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Hospital Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Map</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td scope="row">no</td>
-                        <td><a class="search-a" href="#">hospital Name</a></td>
-                        <td>address</td>
-                        <td>map</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
+    <!-- list
+    ================================================== -->
+    {#        <div class="place-search-table container">#}
+    {#            <div class="tips-page tips-table">#}
+    {#                <table class="table table-hover">#}
+    {#                    <thead>#}
+    {#                    <tr>#}
+    {#                        <th scope="col">No</th>#}
+    {#                        <th scope="col">Hospital Name</th>#}
+    {#                        <th scope="col">Address</th>#}
+    {#                        <th scope="col">Map</th>#}
+    {#                    </tr>#}
+    {#                    </thead>#}
+    {#                    <tbody>#}
+    {#                    <tr>#}
+    {#                        <td scope="row">no</td>#}
+    {#                        <td><a class="search-a" href="#">hospital Name</a></td>#}
+    {#                        <td>address</td>#}
+    {#                        <td>map</td>#}
+    {#                    </tr>#}
+    {#                    </tbody>#}
+    {#                </table>#}
+    {#            </div>#}
+    {#        </div>#}
     <!--/list-->
+
+
+
+        {{ df2.age }}
+        <body class="container"><</body>
+        <hr>
+        <div id="my_tab" class="tab-content">
+            <table>
+                <thead>
+                <tr>
+                    <th>나이</th>
+                    <th>위치</th>
+                    <th>보호소 번호</th>
+                    <th>동물 색상</th>
+                    <th>신고번호</th>
+{#                    <th>사진</th>#}
+                    <th>신고날짜</th>
+                    <th>신고 위치</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td> {{ df2.age.value }}</td>
+                    <td> {{ df2.careAddr }}</td>
+                    <td> {{ df2.careTel }}</td>
+                    <br/>
+                    <td> {{ df2.colorCd }}</td>
+                    <br/>
+                    <td> {{ df2.desertionNo }}</td>
+                    <br/>
+{#                    <td><img style="height: 50px; width: 50px" src={{ df2.profile }}</td><br/>#}
+                    <td> {{ df2.happenDt }}</td>
+                    <br/>
+                    <td> {{ df2.happenPlace }}</td>
+                    <br/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="my_tab" class="tab-content">
+            <div class="tab-pane fade show active" id="usus">
+                <p>
+                    {% comment %}
+                        {% for df in df2 %}
+                        {{df2.age}}<br/>
+                        {% endfor %}
+                    {% endcomment %}
+                </p>
+            </div>
+        </div>
 
 {% endblock %}

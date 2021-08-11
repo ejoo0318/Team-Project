@@ -5,8 +5,12 @@ from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 # 게시판 기능
-from .forms import BoardForm, BoardDetailForm
 from .models import Board, Qna, Tips
+# 유기동물 보호센터 검색 기능
+import xml.etree.ElementTree as ET
+import pandas as pd
+import requests
+import json
 
 
 # 로그인
@@ -61,78 +65,71 @@ def board(request):
 
 
 # # 게시판 새 글작성
-# def tips_create(request):
-#     # 글 작성 화면에서 저장 버튼을 눌렀을 때
-#     if request.method == 'POST':
-#         board_form = BoardForm(request.POST)
-#         if board_form.is_valid():
-#             new_post = board_form.save(commit=False)
-#             new_post.save()
-#             return redirect('community/tips.html')  # 작성하면 글 목록 화면으로 redirect
-#
-#     # 리스트 화면에서 새글 작성 버튼을 눌렀을 때
-#     else:
-#         board_form = BoardForm()
-#
-#     return render(request, 'community/tips_create.html', {
-#         'board_form': board_form
-#     })
-#
-#
-# def qna_create(request):
-#     # 글 작성 화면에서 저장 버튼을 눌렀을 때
-#     if request.method == 'POST':
-#         board_form = BoardForm(request.POST)
-#         if board_form.is_valid():
-#             new_post = board_form.save(commit=False)
-#             new_post.save()
-#             return redirect('community/qna.html')  # 작성하면 글 목록 화면으로 redirect
-#
-#     # 리스트 화면에서 새글 작성 버튼을 눌렀을 때
-#     else:
-#         board_form = BoardForm()
-#
-#     return render(request, 'community/qna_create.html', {
-#         'board_form': board_form
-#     })
-#
-#
+def tips_create(request):
+
+    if request.method == 'POST':
+        author = request.POST['author']
+        title = request.POST['title']
+        content = request.POST['content']
+
+        for img in request.FILES.getlist('photo'):
+            my_photo = img
+        tips_board = Tips(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+        tips_board.save()
+
+        return HttpResponseRedirect(reverse('community:tips'))
+    else:
+        return render(request, 'community/tips_create.html')
+
+
+def qna_create(request):
+
+    if request.method == 'POST':
+        author = request.POST['author']
+        title = request.POST['title']
+        content = request.POST['content']
+
+        for img in request.FILES.getlist('photo'):
+            my_photo = img
+        qna_board = Qna(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+        qna_board.save()
+
+        return HttpResponseRedirect(reverse('community:qna'))
+    else:
+        return render(request, 'community/qna_create.html')
+
+
 def board_create(request):
 
     if request.method == 'POST':
         author = request.POST['author']
         title = request.POST['title']
         content = request.POST['content']
-        free_board = Board(b_title=title, b_author=author, b_content=content)
+
+        for img in request.FILES.getlist('photo'):
+            my_photo = img
+
+        free_board = Board(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
         free_board.save()
-        return HttpResponseRedirect(reverse('board'))
+
+        return HttpResponseRedirect(reverse('community:board'))
     else:
         return render(request, 'community/board_create.html')
-#
-#
-# # 게시판 상세보기
-# def tips_detail(request, board_id):
-#     post = get_object_or_404(Tips, id=board_id)
-#     board_detail_form = BoardDetailForm(instance=post)
-#     board_detail_form.show_board_detail()
-#     comments = post.comment_set.all().order_by('-id')  # 댓글 정보
-#
-#     return render(request, 'community/tips_detail.html',
-#                   {'board_detail_form': board_detail_form,
-#                    'comments': comments})
-#
-#
-# def qna_detail(request, board_id):
-#     post = get_object_or_404(Qna, id=board_id)
-#     board_detail_form = BoardDetailForm(instance=post)
-#     board_detail_form.show_board_detail()
-#     comments = post.comment_set.all().order_by('-id')  # 댓글 정보
-#
-#     return render(request, 'community/qna_detail.html',
-#                   {'board_detail_form': board_detail_form,
-#                    'comments': comments})
-#
-#
+
+
+# 게시판 상세보기
+def tips_detail(request, post_id):
+    posts = get_object_or_404(Tips, id=post_id)
+    # comments = posts.comment_set.all().order_by('-id')  # 댓글 정보
+
+    return render(request, 'community/tips_detail.html', {'posts': posts})
+
+
+def qna_detail(request, post_id):
+    posts = get_object_or_404(Qna, id=post_id)
+    # comments = posts.comment_set.all().order_by('-id')  # 댓글 정보
+
+    return render(request, 'community/qna_detail.html', {'posts': posts})
 
 
 def board_detail(request, post_id):
@@ -168,29 +165,84 @@ def hospital(request):
     return render(request, 'community/hospital.html')
 
 
-def shelter(request):
-    return render(request, 'community/shelter.html')
+# def shelter(request):
+#     return render(request, 'community/shelter.html')
 
 
-def tips_create(request):
-    return render(request, 'community/tips_create.html')
-
-
-def qna_create(request):
-    return render(request, 'community/tips_create.html')
+# def tips_create(request):
+#     return render(request, 'community/tips_create.html')
+#
+#
+# def qna_create(request):
+#     return render(request, 'community/tips_create.html')
 
 
 # def board_create(request):
 #     return render(request, 'community/tips_create.html')
 
-
-def tips_detail(request):
-    return render(request, 'community/tips_detail.html')
-
-
-def qna_detail(request):
-    return render(request, 'community/tips_detail.html')
+#
+# def tips_detail(request):
+#     return render(request, 'community/tips_detail.html')
+#
+#
+# def qna_detail(request):
+#     return render(request, 'community/tips_detail.html')
 
 
 # def board_detail(request):
 #     return render(request, 'community/tips_detail.html')
+
+
+def shelter(request):
+
+#    a_serch = animal_serch.object.all()
+#    context = {'animal_serch': animal_serch}
+#    return render(request, 'animal/animal.html', context)
+
+    url = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic'
+
+    payload = {
+        'serviceKey': '1zQWNFsLekxRSL9eOgAGYY+0gq339y3pEyBW1vC31LkJf48SZvduvflcNjBC3/Oej9jwqY40e+7yDKdK+gDRRw==',
+        'bgnde': '20210730',
+        'endde': '20210731',
+        'upr_cd': '6110000',
+        'numOfRows': 7500
+    }
+
+    # root = elementTree.fromstring (request.get(url, verify=False).text)
+
+    response = requests.get(url, params=payload)
+
+    root = ET.fromstring(response.text)
+
+    rows = []
+
+    for item in root.iter('item'):
+        row = {}
+        for child in list(item):
+            row[child.tag] = child.text  # child에 tag랑 text 사용할 수 있게
+        rows.append(row)
+
+    item = next(root.iter('item'))
+
+    # 컬럼 목록 준비
+    columns = []
+
+    # Accumulation
+    for child in list(item):
+        columns.append(child.tag)
+
+    df2 = pd.DataFrame(rows, columns=columns)
+    df2 = df2.to_json(orient='columns', force_ascii=False)
+    result = json.loads(df2)  # json을 python의 dictionary로 변경
+    # dataframe을 json으로 변경해서 처리
+
+    context = {'df2': result}
+
+#    return HttpResponse(json.dumps(df2, ensure_ascii=False),
+#                    content_type="application/json")
+
+#    return HttpResponse(df2,
+#                    content_type="application/json; charset=utf8")
+
+    return render(request, 'community/shelter.html', context)

@@ -53,7 +53,7 @@
     ================================================== -->
     <div class="container board-header">
         <div class="board-title">
-            <h1 class="title-h1">New Post</h1>
+            <h1 class="title-h1">Board New Post</h1>
         </div>
         <div class="board-post-btn">
             <a href="javascript:history.back();" class="nino-btn nino-post-btn">BACK</a>
@@ -65,7 +65,9 @@
     <!-- content 자유게시판 새 글작성
    ================================================== -->
     <div class="container">
-        <form action="{% url 'community:board_create' %}" method="POST">
+        <form action="{% url 'community:board_create' %}"
+              method="POST"
+              enctype="multipart/form-data">
             {% csrf_token %}
             <div id="boards-form">
                 <label for="title">Title : </label>
@@ -75,8 +77,8 @@
                 <input type="text" id="author" name="author">
 
                 <div class="file-box">
-                    <label for="avatar">Upload a Photo</label>
-                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                    <label for="photo">Upload a Photo</label>
+                    <input type="file" id="photo" name="photo" accept="image/png, image/jpeg">
                 </div>
 
                 <label for="content">Content : </label>

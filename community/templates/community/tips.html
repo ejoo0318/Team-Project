@@ -76,14 +76,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">no</th>
-                    <td><a class="tips-a" href="{% url 'community:tips_detail' %}">title</a></td>
-                    <td>author</td>
-                    <td>content</td>
-                    <td>123</td>
-                    <td>123</td>
-                </tr>
+                {% for post in posts %}
+                    <tr>
+                        <th scope="row">{{ post.id }}</th>
+                        <td><a href="/community/{{ post.id }}/tips_detail/">{{ post.b_title }}</a></td>
+                        <td>{{ post.b_author }}</td>
+                        <td>{{ post.b_date }}</td>
+                        <td>{{ post.b_comment_count }}</td>
+                        <td>{{ post.b_like_count }}</td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
