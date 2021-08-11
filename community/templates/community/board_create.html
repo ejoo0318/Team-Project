@@ -23,8 +23,7 @@
                     <div class="nino-menuItem pull-right">
                         <div class="collapse navbar-collapse pull-left" id="nino-navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a>
-                                </li>
+                                <li><a href="#" onclick="testa('{% url 'community:tips' %}')">Tips<span class="sr-only">(current)</span></a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:qna' %}')">QnA</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:board' %}')">Board</a></li>
                                 <li><a href="#" onclick="testa('{% url 'community:hospital' %}')">Hospital</a></li>
@@ -72,9 +71,6 @@
             <div id="boards-form">
                 <label for="title">Title : </label>
                 <input type="text" id="title" name="title">
-
-                <label for="author">Name : </label>
-                <input type="text" id="author" name="author">
 
                 <div class="file-box">
                     <label for="photo">Upload a Photo</label>

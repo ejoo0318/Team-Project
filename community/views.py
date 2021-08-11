@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 # 게시판 기능
 from .models import Board, Qna, Tips
 # 유기동물 보호센터 검색 기능
@@ -65,10 +66,11 @@ def board(request):
 
 
 # # 게시판 새 글작성
+@login_required(login_url="/community/login/")
 def tips_create(request):
 
     if request.method == 'POST':
-        author = request.POST['author']
+        author = request.user
         title = request.POST['title']
         content = request.POST['content']
 
@@ -82,10 +84,11 @@ def tips_create(request):
         return render(request, 'community/tips_create.html')
 
 
+@login_required(login_url="/community/login/")
 def qna_create(request):
 
     if request.method == 'POST':
-        author = request.POST['author']
+        author = request.user
         title = request.POST['title']
         content = request.POST['content']
 
@@ -99,10 +102,11 @@ def qna_create(request):
         return render(request, 'community/qna_create.html')
 
 
+@login_required(login_url="/community/login/")
 def board_create(request):
 
     if request.method == 'POST':
-        author = request.POST['author']
+        author = request.user
         title = request.POST['title']
         content = request.POST['content']
 
