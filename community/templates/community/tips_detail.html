@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="/static/css/pages/header.css">
     <link rel="stylesheet" href="/static/css/pages/board.css">
     <link rel="stylesheet" href="/static/css/pages/create.css">
+    <script src="/static/js/btn.js"></script>
 
     <!-- Header
     ================================================== -->
@@ -69,7 +70,7 @@
     <div class="container">
         <form>
             <div id="boards-form">
-                <span>No : {{ posts.id }}</span>
+                <span>No : <span id="post_id">{{ posts.id }}</span></span>
 
                 <label for="title">Title : </label>
                 <input type="text" id="title" name="title" value="{{ posts.b_title }}" disabled>
@@ -86,7 +87,8 @@
                 <textarea id="content" name="content" rows="5" cols="33" disabled>{{ posts.b_title }}</textarea>
             </div>
             <div id="boards-detail-btn">
-                <button class="like-btn" type="button"><i class="far fa-heart fa-2x"></i><span>123</span></button>
+                 <button class="like-btn" type="button"
+                         onclick="tips_like_click()"><i class="far fa-heart fa-2x"></i><span>{{ posts.b_like_count }}</span></button>
                 <button type="button"><i class="far fa-edit fa-2x"></i><span>EDIT</span></button>
                 <button type="button"><i class="far fa-trash-alt fa-2x"></i><span>DEL</span></button>
             </div>

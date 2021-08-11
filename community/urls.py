@@ -25,6 +25,10 @@ urlpatterns = [
     path('<int:post_id>/tips_detail/', views.tips_detail, name='tips_detail'),
     path('<int:post_id>/qna_detail/', views.qna_detail, name='qna_detail'),
     path('<int:post_id>/board_detail/', views.board_detail, name='board_detail'),
+    # 좋아요
+    path('<int:post_id>/like_tips/', views.like_tips, name="like_tips"),
+    path('<int:post_id>/like_qna/', views.like_qna, name="like_qna"),
+    path('<int:post_id>/like_board/', views.like_board, name="like_board"),
 ]
 
 

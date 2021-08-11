@@ -143,6 +143,43 @@ def board_detail(request, post_id):
     return render(request, 'community/board_detail.html', {'posts': posts})
 
 
+# 좋아요
+def like_tips(request, post_id):
+    posts = get_object_or_404(Tips, pk=post_id)
+    posts.b_like_count += 1
+    posts.save()
+    return redirect('community:tips_detail', post_id)
+
+
+def like_qna(request, post_id):
+    posts = get_object_or_404(Qna, pk=post_id)
+    posts.b_like_count += 1
+    posts.save()
+    return redirect('community:qna_detail', post_id)
+
+
+def like_board(request, post_id):
+    posts = get_object_or_404(Board, pk=post_id)
+    posts.b_like_count += 1
+    posts.save()
+    return redirect('community:board_detail', post_id)
+
+
+# def like_post(request, post_id):
+#     posts = get_object_or_404(Board, pk=post_id)
+#     posts.b_like_count += 1
+#     posts.save()
+#     return redirect('community:qna_detail', post_id)
+#
+#
+#
+# def like_post(request, post_id):
+#     posts = get_object_or_404(Board, pk=post_id)
+#     posts.b_like_count += 1
+#     posts.save()
+#     return redirect('community:board_detail', post_id)
+
+
 # 변경 전 코드
 
 # def login(request):
