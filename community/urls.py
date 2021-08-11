@@ -29,6 +29,10 @@ urlpatterns = [
     path('<int:post_id>/like_tips/', views.like_tips, name="like_tips"),
     path('<int:post_id>/like_qna/', views.like_qna, name="like_qna"),
     path('<int:post_id>/like_board/', views.like_board, name="like_board"),
+    # 삭제
+    path('<int:post_id>/delete_tips/', views.delete_tips, name="delete_tips"),
+    path('<int:post_id>/delete_qna/', views.delete_qna, name="delete_qna"),
+    path('<int:post_id>/delete_board/', views.delete_board, name="delete_board"),
 ]
 
 

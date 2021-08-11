@@ -165,73 +165,27 @@ def like_board(request, post_id):
     return redirect('community:board_detail', post_id)
 
 
-# def like_post(request, post_id):
-#     posts = get_object_or_404(Board, pk=post_id)
-#     posts.b_like_count += 1
-#     posts.save()
-#     return redirect('community:qna_detail', post_id)
-#
-#
-#
-# def like_post(request, post_id):
-#     posts = get_object_or_404(Board, pk=post_id)
-#     posts.b_like_count += 1
-#     posts.save()
-#     return redirect('community:board_detail', post_id)
+# 삭제
+def delete_tips(request, post_id):
+    posts = get_object_or_404(Tips, pk=post_id)
+    posts.delete()
+    return redirect('community:tips')
 
 
-# 변경 전 코드
+def delete_qna(request, post_id):
+    posts = get_object_or_404(Qna, pk=post_id)
+    posts.delete()
+    return redirect('community:qna')
 
-# def login(request):
-#     return render(request, 'community/login.html')
-#
-#
-# def account(request):
-#     return render(request, 'community/account.html')
 
-#
-# def tips(request):
-#     return render(request, 'community/tips.html')
-#
-#
-# def qna(request):
-#     return render(request, 'community/qna.html')
-#
-#
-# def board(request):
-#     return render(request, 'community/board.html')
+def delete_board(request, post_id):
+    posts = get_object_or_404(Board, pk=post_id)
+    posts.delete()
+    return redirect('community:board')
 
 
 def hospital(request):
     return render(request, 'community/hospital.html')
-
-
-# def shelter(request):
-#     return render(request, 'community/shelter.html')
-
-
-# def tips_create(request):
-#     return render(request, 'community/tips_create.html')
-#
-#
-# def qna_create(request):
-#     return render(request, 'community/tips_create.html')
-
-
-# def board_create(request):
-#     return render(request, 'community/tips_create.html')
-
-#
-# def tips_detail(request):
-#     return render(request, 'community/tips_detail.html')
-#
-#
-# def qna_detail(request):
-#     return render(request, 'community/tips_detail.html')
-
-
-# def board_detail(request):
-#     return render(request, 'community/tips_detail.html')
 
 
 def shelter(request):
