@@ -353,12 +353,23 @@ def shelter(request):
     for child in list(item):
         columns.append(child.tag)
 
+    # 전체 컬럼 :
+    # age careAddr careNm careTel chargeNm colorCd desertionNo filename happenDt happenPlace kindCd neuterYn noticeEdt noticeNo noticeSdt officetel orgNm popfile processState sexCd specialMark weight
+
+    # 쓰는 컬럼:
+    # age 나이 , careAddr 위치, careTel 보호소 번호, colorCd 색상 , desertionNo 신고번호, happenDt 신고 날짜, happenPlace  신고 위치
+
+    columns = ['age', 'careAddr', 'careTel', 'colorCd', 'desertionNo', 'happenDt', 'happenPlace']
     df2 = pd.DataFrame(rows, columns=columns)
     df2 = df2.to_json(orient='columns', force_ascii=False)
     result = json.loads(df2)  # json을 python의 dictionary로 변경
     # dataframe을 json으로 변경해서 처리
 
-    context = {'df2': result}
+    # data = df2.format(list(result.values()))
+
+    context = {'df2': result,
+               # 'data': data
+               }
 
     #    return HttpResponse(json.dumps(df2, ensure_ascii=False),
     #                    content_type="application/json")

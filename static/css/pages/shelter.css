@@ -1,0 +1,15 @@
+.head_tr {
+    font-size: 20px;
+}
+
+.head_tr th {
+    text-align: center;
+}
+
+.body_tr {
+    text-align: center;
+}
+.body_th {
+    color: #666666;
+    text-align: center;
+}

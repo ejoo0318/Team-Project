@@ -54,6 +54,7 @@ body {
 .search-title p {
     color: white;
     font-size: 15px;
+    margin-left: 10px;
 }
 
 .place-search-table {
