@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import requests
 import json
+from PIL import Image
 
 
 # id값이 정렬안됨
@@ -19,17 +20,14 @@ import json
 # 댓글
 
 def home(request):
-
-    posts_board = Board.objects.all().order_by('-b_date')
-    # max_num = max(Board.post_id)
-    posts_tips = Tips.objects.all().order_by('-b_date')
-    posts_qna = Qna.objects.all().order_by('-b_date')
+    posts_board = Board.objects.all().order_by('-id')
+    posts_tips = Tips.objects.all().order_by('-id')
+    posts_qna = Qna.objects.all().order_by('-id')
 
     return render(request, 'index.html', {
         'posts_board': posts_board,
         'posts_tips': posts_tips,
-        'posts_qna': posts_qna
-        # 'max_num': max_num
+        'posts_qna': posts_qna,
     })
 
 
@@ -91,9 +89,13 @@ def tips_create(request):
         author = request.user
         title = request.POST['title']
         content = request.POST['content']
+        my_photo = request.FILES.getlist('photo')
+        for img in my_photo:
+            if img.isnull():
+                my_photo = Image.open('/media/noimage.jpg')
+            else:
+                my_photo = img
 
-        for img in request.FILES.getlist('photo'):
-            my_photo = img
         tips_board = Tips(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
         tips_board.save()
 
@@ -105,7 +107,7 @@ def tips_create(request):
 @login_required(login_url="/community/login/")
 def qna_create(request):
     if request.method == 'POST':
-        author = request.user
+        author = request.POST['author']
         title = request.POST['title']
         content = request.POST['content']
 
@@ -122,7 +124,7 @@ def qna_create(request):
 @login_required(login_url="/community/login/")
 def board_create(request):
     if request.method == 'POST':
-        author = request.user
+        author = request.POST['author']
         title = request.POST['title']
         content = request.POST['content']
 
@@ -140,24 +142,20 @@ def board_create(request):
 # 게시판 상세보기
 def tips_detail(request, post_id):
     posts = get_object_or_404(Tips, id=post_id)
-    # comments = posts.comment_set.all().order_by('-id')  # 댓글 정보
 
     return render(request, 'community/tips_detail.html', {'posts': posts})
 
 
 def qna_detail(request, post_id):
     posts = get_object_or_404(Qna, id=post_id)
-    # comments = posts.comment_set.all().order_by('-id')  # 댓글 정보
-    comment = posts.qnacomment_set.all.order_by('-id')
 
-    return render(request, 'community/qna_detail.html', {'posts': posts, 'comment': comment})
+    return render(request, 'community/qna_detail.html', {'posts': posts})
 
 
 def board_detail(request, post_id):
     posts = get_object_or_404(Board, id=post_id)
-    comment = posts.boardcomment_set.all().order_by('-id')  # 댓글 정보
 
-    return render(request, 'community/board_detail.html', {'posts': posts, 'comment': comment})
+    return render(request, 'community/board_detail.html', {'posts': posts})
 
 
 # 좋아요
@@ -204,7 +202,6 @@ def delete_board(request, post_id):
 # 수정
 def edit_tips(request, post_id):
     pass
-#     # posts = get_object_or_404(pk=post_id)
 
 
 def hospital(request):

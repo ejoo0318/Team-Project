@@ -82,6 +82,8 @@
                 {% if posts.b_photo %}
                     <img src="{{ posts.b_photo.url }}" alt="" height="300" width="300">
                     <br>
+                {% else %}
+                    <img src="/media/noimage.jpg" alt="" height="225" width="365">
                 {% endif %}
 
                 <label for="content">Content : </label>
