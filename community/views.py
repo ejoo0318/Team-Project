@@ -5,14 +5,16 @@ from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-# 게시판 기능
-from .models import Board, Qna, Tips
 # 유기동물 보호센터 검색 기능
 import xml.etree.ElementTree as ET
 import pandas as pd
 import requests
 import json
 from PIL import Image
+# 댓글
+from .forms import BoardForm, BoardDetailForm
+from .models import Board, Qna, Tips, BoardComment, QnaComment, TipsComment
+from django.http import JsonResponse
 
 
 # id값이 정렬안됨
@@ -89,14 +91,14 @@ def tips_create(request):
         author = request.user
         title = request.POST['title']
         content = request.POST['content']
-        my_photo = request.FILES.getlist('photo')
-        for img in my_photo:
-            if img.isnull():
-                my_photo = Image.open('/media/noimage.jpg')
-            else:
-                my_photo = img
+        my_photos = request.FILES.getlist('photo')
 
-        tips_board = Tips(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+        if len(my_photos) != 0:
+            my_photo = my_photos[0]
+            tips_board = Tips(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+        else:
+            tips_board = Tips(b_title=title, b_author=author, b_content=content)
+
         tips_board.save()
 
         return HttpResponseRedirect(reverse('community:tips'))
@@ -107,14 +109,18 @@ def tips_create(request):
 @login_required(login_url="/community/login/")
 def qna_create(request):
     if request.method == 'POST':
-        author = request.POST['author']
+        author = request.user
         title = request.POST['title']
         content = request.POST['content']
+        my_photos = request.FILES.getlist('photo')
 
-        for img in request.FILES.getlist('photo'):
-            my_photo = img
-        qna_board = Qna(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
-        qna_board.save()
+        if len(my_photos) != 0:
+            my_photo = my_photos[0]
+            tips_board = Qna(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+        else:
+            tips_board = Qna(b_title=title, b_author=author, b_content=content)
+
+        tips_board.save()
 
         return HttpResponseRedirect(reverse('community:qna'))
     else:
@@ -124,38 +130,124 @@ def qna_create(request):
 @login_required(login_url="/community/login/")
 def board_create(request):
     if request.method == 'POST':
-        author = request.POST['author']
+        author = request.user
         title = request.POST['title']
         content = request.POST['content']
+        my_photos = request.FILES.getlist('photo')
 
-        for img in request.FILES.getlist('photo'):
-            my_photo = img
+        if len(my_photos) != 0:
+            my_photo = my_photos[0]
+            tips_board = Board(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+        else:
+            tips_board = Board(b_title=title, b_author=author, b_content=content)
 
-        free_board = Board(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
-        free_board.save()
+        tips_board.save()
 
         return HttpResponseRedirect(reverse('community:board'))
     else:
         return render(request, 'community/board_create.html')
 
 
-# 게시판 상세보기
+# tips 댓글
 def tips_detail(request, post_id):
     posts = get_object_or_404(Tips, id=post_id)
+    comments = posts.tipscomment_set.all().order_by('-id')  # 댓글 정보
 
-    return render(request, 'community/tips_detail.html', {'posts': posts})
+    return render(request, 'community/tips_detail.html',
+                  {'posts': posts,
+                   'comments': comments})
 
 
+def tips_c_create(request):
+    comment = TipsComment()
+    comment.c_author = request.GET['comment_author']
+    comment.c_content = request.GET['comment_content']
+    comment.board_id = request.GET['board_id']
+    print('author : ' + request.GET['comment_author'])
+    print('content : ' + request.GET['comment_content'])
+    print('board_id : ' + request.GET['board_id'])
+    comment.save()
+    return JsonResponse({
+        'code': '200',  # code 200의 의미는 삭제성공의 의미로 가정
+        'c_author': request.GET['comment_author'],
+        'c_content': request.GET['comment_content'],
+        'c_id': comment.id
+    }, json_dumps_params={'ensure_ascii': True})
+
+
+def tips_c_delete(request):
+    comment = get_object_or_404(TipsComment, id=request.GET['comment_id'])
+    comment.delete()
+    return JsonResponse({
+        'code': '200'  # code 200의 의미는 삭제성공의 의미로 가정
+    }, json_dumps_params={'ensure_ascii': True})
+
+
+# qna 댓글
 def qna_detail(request, post_id):
     posts = get_object_or_404(Qna, id=post_id)
+    comments = posts.qnacomment_set.all().order_by('-id')
 
-    return render(request, 'community/qna_detail.html', {'posts': posts})
+    return render(request, 'community/qna_detail.html',
+                  {'posts': posts,
+                   'comments': comments})
 
 
+def qna_c_create(request):
+    comment = QnaComment()
+    comment.c_author = request.GET['comment_author']
+    comment.c_content = request.GET['comment_content']
+    comment.board_id = request.GET['board_id']
+    print('author : ' + request.GET['comment_author'])
+    print('content : ' + request.GET['comment_content'])
+    print('board_id : ' + request.GET['board_id'])
+    comment.save()
+    return JsonResponse({
+        'code': '200',  # code 200의 의미는 삭제성공의 의미로 가정
+        'c_author': request.GET['comment_author'],
+        'c_content': request.GET['comment_content'],
+        'c_id': comment.id
+    }, json_dumps_params={'ensure_ascii': True})
+
+
+def qna_c_delete(request):
+    comment = get_object_or_404(QnaComment, id=request.GET['comment_id'])
+    comment.delete()
+    return JsonResponse({
+        'code': '200'  # code 200의 의미는 삭제성공의 의미로 가정
+    }, json_dumps_params={'ensure_ascii': True})
+
+
+# board 댓글
 def board_detail(request, post_id):
     posts = get_object_or_404(Board, id=post_id)
+    comments = posts.boardcomment_set.all().order_by('-id')  # 댓글 정보
 
-    return render(request, 'community/board_detail.html', {'posts': posts})
+    return render(request, 'community/board_detail.html',
+                  {'posts': posts,
+                   'comments': comments})
+
+
+def board_c_create(request):
+    comment = BoardComment()
+    comment.c_author = request.GET['comment_author']
+    comment.c_content = request.GET['comment_content']
+    comment.board_id = request.GET['board_id']
+    comment.save()
+    return JsonResponse({
+        'code': '200',  # code 200의 의미는 삭제성공의 의미로 가정
+        'c_author': request.GET['comment_author'],
+        'c_content': request.GET['comment_content'],
+        'c_id': comment.id
+    }, json_dumps_params={'ensure_ascii': True})
+
+
+def board_c_delete(request):
+    comment = get_object_or_404(BoardComment, id=request.GET['comment_id'])
+    comment.delete()
+    return JsonResponse({
+        'code': '200'  # code 200의 의미는 삭제성공의 의미로 가정
+    }, json_dumps_params={'ensure_ascii': True})
 
 
 # 좋아요

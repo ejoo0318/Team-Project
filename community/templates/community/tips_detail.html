@@ -71,7 +71,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div id="boards-form">
-                <span>No : <span id="post_id">{{ posts.id }}</span></span>
+                <span>No : <span id="board_id">{{ posts.id }}</span></span>
 
                 <label for="title">Title : </label>
                 <input type="text" id="title" name="title" value="{{ posts.b_title }}" disabled>
@@ -107,21 +107,24 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Name</th>
                     <th scope="col">Content</th>
                     <th scope="col">Delete</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="comment_body">
+                {% for comment in comments %}
                 <tr>
-                    <td>no</td>
-                    <td>name</td>
-                    <td>content</td>
+                    <td>{{ comment.c_author }}</td>
+                    <td>{{ comment.c_content }}</td>
                     <td>
-                        <button class="del-btn" type="button">del</button>
+                        <button class="del-btn"
+                                type="button"
+                                data-comment_id="{{ comment.id }}"
+                                id="tips_comment_delete_btn">del</button>
                     </td>
                 </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -137,7 +140,7 @@
                 <input type="text" id="c_content">
             </div>
             <div>
-                <button type="button" id="comment_create_btn">Submit</button>
+                <button type="button" id="tips_comment_create_btn">Submit</button>
             </div>
         </div>
     </div>

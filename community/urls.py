@@ -35,7 +35,13 @@ urlpatterns = [
     path('<int:post_id>/delete_board/', views.delete_board, name="delete_board"),
     # 수정
     path('<int:post_id>/edit_tips/', views.edit_tips, name="edit_tips"),
-
+    # 댓글
+    path('commentCreate/', views.board_c_create, name='board_c_create'),
+    path('commentDelete/', views.board_c_delete, name='board_c_delete'),
+    path('qna_commentCreate/', views.qna_c_create, name='qna_c_create'),
+    path('qna_commentDelete/', views.qna_c_delete, name='qna_c_delete'),
+    path('tips_commentCreate/', views.tips_c_create, name='tips_c_create'),
+    path('tips_commentDelete/', views.tips_c_delete, name='tips_c_delete'),
 ]
 
 
