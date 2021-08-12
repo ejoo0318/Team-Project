@@ -60,11 +60,10 @@
     </div>
     <!--/#Title-->
 
-
     <!-- content
    ================================================== -->
     <div class="container">
-        <form action="{% url 'community:tips_edit' post_id %}"
+        <form action="{% url 'community:tips_modify' posts.id %}"
               method="POST"
               enctype="multipart/form-data">
             {% csrf_token %}
@@ -84,6 +83,7 @@
             </div>
 
             <div id="boards-create-btn">
+{#                <button onclick="tips_modify_btn" class="post-btn" type="button">POST</button>#}
                 <button class="post-btn" type="submit">POST</button>
             </div>
         </form>

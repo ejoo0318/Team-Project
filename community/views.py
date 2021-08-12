@@ -293,8 +293,22 @@ def delete_board(request, post_id):
 
 # 수정
 def tips_edit(request, post_id):
-    posts = get_object_or_404(Tips, id=post_id)
+    posts = Tips.objects.get(pk=post_id)
     return render(request, 'community/tips_edit.html', {'posts': posts})
+
+
+# 수정 후 저장
+def tips_modify(request, post_id):
+    posts = Tips.objects.get(pk=post_id)
+    title = request.POST.get('b_title')
+    content = request.POST.get('b_content')
+    if title is not None and posts is not None:
+        posts.b_title = title
+        posts.b_content = content
+        posts.save()
+        return redirect('community:delete_tips', post_id=post_id)
+    else:
+        return redirect('community:delete_tips', post_id=post_id)
 
 
 def hospital(request):
