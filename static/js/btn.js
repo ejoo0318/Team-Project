@@ -42,9 +42,13 @@ function board_delete_click() {
 //    $("#title, #author, #content").removeAttr('disabled');
 // }  )
 
-$(function (event) {
-    $('#edit_btn').on('click', function (event) {
-        $("#title, #author, #content").removeAttr('disabled');
-        // document.location.href = '/bbs/'+ $('#post_id').text() + '/b_edit/'
-    })
-})
+// $(function (event) {
+//     $('#edit_btn').on('click', function (event) {
+//         $("#title, #author, #content").removeAttr('disabled');
+//         // document.location.href = '/bbs/'+ $('#post_id').text() + '/b_edit/'
+//     })
+// })
+
+function tips_edit_btn() {
+    $(document).removeAttr("disabled")
+}
