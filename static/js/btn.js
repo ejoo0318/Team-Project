@@ -50,5 +50,9 @@ function board_delete_click() {
 // })
 
 function tips_edit_btn() {
-    $(document).removeAttr("disabled")
+    $('[type=text]').removeAttr("disabled");
+    $("textarea").removeAttr("disabled");
+    $('#edit_btn').text("POST").onclick(function (event) {
+        document.location.href = '/community/' + $('#post_id').text() + '/edit_tips/'
+    })
 }

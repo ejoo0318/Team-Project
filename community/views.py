@@ -19,6 +19,7 @@ import json
 # 댓글
 
 def home(request):
+
     posts_board = Board.objects.all().order_by('-b_date')
     # max_num = max(Board.post_id)
     posts_tips = Tips.objects.all().order_by('-b_date')
@@ -147,15 +148,16 @@ def tips_detail(request, post_id):
 def qna_detail(request, post_id):
     posts = get_object_or_404(Qna, id=post_id)
     # comments = posts.comment_set.all().order_by('-id')  # 댓글 정보
+    comment = posts.qnacomment_set.all.order_by('-id')
 
-    return render(request, 'community/qna_detail.html', {'posts': posts})
+    return render(request, 'community/qna_detail.html', {'posts': posts, 'comment': comment})
 
 
 def board_detail(request, post_id):
     posts = get_object_or_404(Board, id=post_id)
-    # comments = posts.comment_set.all().order_by('-id')  # 댓글 정보
+    comment = posts.boardcomment_set.all().order_by('-id')  # 댓글 정보
 
-    return render(request, 'community/board_detail.html', {'posts': posts})
+    return render(request, 'community/board_detail.html', {'posts': posts, 'comment': comment})
 
 
 # 좋아요
@@ -200,10 +202,9 @@ def delete_board(request, post_id):
 
 
 # 수정
-# def b_edit(request, post_id):
-#     posts = get_object_or_404(Board, pk=post_id)
-#     board_form = BoardForm(instance=posts)
-#     return render(request, 'bbs/edit.html', {'board_form': board_form, 'post_id': post_id})
+def edit_tips(request, post_id):
+    pass
+#     # posts = get_object_or_404(pk=post_id)
 
 
 def hospital(request):

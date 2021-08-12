@@ -68,7 +68,8 @@
      <!-- content- board detail
    ================================================== -->
     <div class="container">
-        <form>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
             <div id="boards-form">
                 <span>No : <span id="post_id">{{ posts.id }}</span></span>
 
@@ -89,7 +90,7 @@
             <div id="boards-detail-btn">
                  <button class="like-btn" type="button"
                          onclick="tips_like_click()"><i class="far fa-heart fa-2x"></i><span>{{ posts.b_like_count }}</span></button>
-                <button type="button" onclick="tips_edit_btn()"><i class="far fa-edit fa-2x"></i><span>EDIT</span></button>
+                <button type="submit" onclick="tips_edit_btn()"><i class="far fa-edit fa-2x"></i><span id="edit_btn">EDIT</span></button>
                 <button type="button" onclick="tips_delete_click()"><i class="far fa-trash-alt fa-2x"></i><span>DEL</span></button>
             </div>
         </form>

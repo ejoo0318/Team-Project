@@ -33,6 +33,9 @@ urlpatterns = [
     path('<int:post_id>/delete_tips/', views.delete_tips, name="delete_tips"),
     path('<int:post_id>/delete_qna/', views.delete_qna, name="delete_qna"),
     path('<int:post_id>/delete_board/', views.delete_board, name="delete_board"),
+    # 수정
+    path('<int:post_id>/edit_tips/', views.edit_tips, name="edit_tips"),
+
 ]
 
 
