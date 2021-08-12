@@ -101,7 +101,7 @@
         </h2>
         <div class="sectionContent">
             <div class="row">
-                 {% for posts_tmp in posts_tips %}
+                {% for posts_tmp in posts_tips %}
                     {% if forloop.counter <= 3 %}
                         <div class="col-md-4 col-sm-4">
                             <article>
@@ -138,24 +138,24 @@
         </h2>
         <div class="sectionContent">
             <div class="row">
-{#                {% for posts_tmp in posts_qna %}#}
-{#                    {% if forloop.counter <= 3 %}#}
-{#                        <div class="col-md-4 col-sm-4">#}
-{#                            <article>#}
-{#                                <div class="articleThumb">#}
-{#                                    <a href="{% url 'community:qna_detail' posts_tmp.id %}">#}
-{#                                        <img src="{{ posts_tmp.b_photo.url }}" alt="" width="360" height="225">#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                                <h3 class="articleTitle"><a href="">{{ posts_tmp }}</a></h3>#}
-{##}
-{#                                <div class="articleMeta">#}
-{#                                    <a href="#"><i class="far fa-heart fa-xs"></i> {{ posts_tmp.b_like_count }}</a>#}
-{#                                </div>#}
-{#                            </article>#}
-{#                        </div>#}
-{#                    {% endif %}#}
-{#                {% endfor %}#}
+                {% for posts_tmp in posts_qna %}
+                    {% if forloop.counter <= 3 %}
+                        <div class="col-md-4 col-sm-4">
+                            <article>
+                                <div class="articleThumb">
+                                    <a href="{% url 'community:qna_detail' posts_tmp.id %}">
+                                        <img src="{{ posts_tmp.b_photo.url }}" alt="" width="360" height="225">
+                                    </a>
+                                </div>
+                                <h3 class="articleTitle"><a href="">{{ posts_tmp }}</a></h3>
+
+                                <div class="articleMeta">
+                                    <a href="#"><i class="far fa-heart fa-xs"></i> {{ posts_tmp.b_like_count }}</a>
+                                </div>
+                            </article>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="more_btn">
                 <a href="{% url 'community:qna' %}" class="nino-btn">More</a>
@@ -175,24 +175,24 @@
         </h2>
         <div class="sectionContent">
             <div class="row">
-{#                {% for posts_tmp in posts_board %}#}
-{#                    {% if forloop.counter <= 3 %}#}
-{#                        <div class="col-md-4 col-sm-4">#}
-{#                            <article>#}
-{#                                <div class="articleThumb">#}
-{#                                    <a href="{% url 'community:board_detail' posts_tmp.id %}">#}
-{#                                        <img src="{{ posts_tmp.b_photo.url }}" alt="" width="360" height="225">#}
-{#                                    </a>#}
-{#                                </div>#}
-{#                                <h3 class="articleTitle"><a href="">{{ posts_tmp }}</a></h3>#}
-{##}
-{#                                <div class="articleMeta">#}
-{#                                    <a href="#"><i class="far fa-heart fa-xs"></i> {{ posts_tmp.b_like_count }}</a>#}
-{#                                </div>#}
-{#                            </article>#}
-{#                        </div>#}
-{#                    {% endif %}#}
-{#                {% endfor %}#}
+                {% for posts_tmp in posts_board %}
+                    {% if forloop.counter <= 3 %}
+                        <div class="col-md-4 col-sm-4">
+                            <article>
+                                <div class="articleThumb">
+                                    <a href="{% url 'community:board_detail' posts_tmp.id %}">
+                                        <img src="{{ posts_tmp.b_photo.url }}" alt="" width="360" height="225">
+                                    </a>
+                                </div>
+                                <h3 class="articleTitle"><a href="">{{ posts_tmp }}</a></h3>
+
+                                <div class="articleMeta">
+                                    <a href="#"><i class="far fa-heart fa-xs"></i> {{ posts_tmp.b_like_count }}</a>
+                                </div>
+                            </article>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="more_btn">
                 <a href="{% url 'community:board' %}" class="nino-btn">More</a>
