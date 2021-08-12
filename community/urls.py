@@ -34,7 +34,7 @@ urlpatterns = [
     path('<int:post_id>/delete_qna/', views.delete_qna, name="delete_qna"),
     path('<int:post_id>/delete_board/', views.delete_board, name="delete_board"),
     # 수정
-    path('<int:post_id>/edit_tips/', views.edit_tips, name="edit_tips"),
+    path('<int:post_id>/tips_edit/', views.tips_edit, name="tips_edit"),
     # 댓글
     path('commentCreate/', views.board_c_create, name='board_c_create'),
     path('commentDelete/', views.board_c_delete, name='board_c_delete'),

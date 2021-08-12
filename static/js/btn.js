@@ -37,14 +37,13 @@ function board_delete_click() {
         document.location.href = '/community/' + $('#board_id').text() + '/delete_board/'
     }
 }
+
+
 //수정
 function tips_edit_btn() {
-    $('[type=text]').removeAttr("disabled");
-    $("textarea").removeAttr("disabled");
-    $('#edit_btn').text("POST").onclick(function (event) {
-        document.location.href = '/community/' + $('#board_id').text() + '/edit_tips/'
-    })
+    document.location.href = '/community/' + $('#board_id').text() + '/tips_edit/'
 }
+
 
 // 댓글
 $(function (event){

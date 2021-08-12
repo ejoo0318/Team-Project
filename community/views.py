@@ -292,8 +292,9 @@ def delete_board(request, post_id):
 
 
 # 수정
-def edit_tips(request, post_id):
-    pass
+def tips_edit(request, post_id):
+    posts = get_object_or_404(Tips, id=post_id)
+    return render(request, 'community/tips_edit.html', {'posts': posts})
 
 
 def hospital(request):
