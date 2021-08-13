@@ -10,16 +10,10 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 import requests
 import json
-from PIL import Image
 # 댓글
-from .forms import BoardForm, BoardDetailForm
 from .models import Board, Qna, Tips, BoardComment, QnaComment, TipsComment
 from django.http import JsonResponse
 
-
-# id값이 정렬안됨
-# 수정버튼작동 수정등록버튼만들기
-# 댓글
 
 def home(request):
     posts_board = Board.objects.all().order_by('-id')
