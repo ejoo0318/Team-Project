@@ -44,6 +44,14 @@ function tips_edit_btn() {
     document.location.href = '/community/' + $('#board_id').text() + '/tips_edit/'
 }
 
+function qna_edit_btn() {
+    document.location.href = '/community/' + $('#board_id').text() + '/qna_edit/'
+}
+
+function board_edit_btn() {
+    document.location.href = '/community/' + $('#board_id').text() + '/board_edit/'
+}
+
 
 // 댓글
 $(function (event){

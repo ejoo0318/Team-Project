@@ -116,11 +116,11 @@ def qna_create(request):
 
         if len(my_photos) != 0:
             my_photo = my_photos[0]
-            tips_board = Qna(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+            qna_board = Qna(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
         else:
-            tips_board = Qna(b_title=title, b_author=author, b_content=content)
+            qna_board = Qna(b_title=title, b_author=author, b_content=content)
 
-        tips_board.save()
+        qna_board.save()
 
         return HttpResponseRedirect(reverse('community:qna'))
     else:
@@ -137,11 +137,11 @@ def board_create(request):
 
         if len(my_photos) != 0:
             my_photo = my_photos[0]
-            tips_board = Board(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
+            board_board = Board(b_title=title, b_author=author, b_content=content, b_photo=my_photo)
         else:
-            tips_board = Board(b_title=title, b_author=author, b_content=content)
+            board_board = Board(b_title=title, b_author=author, b_content=content)
 
-        tips_board.save()
+        board_board.save()
 
         return HttpResponseRedirect(reverse('community:board'))
     else:
@@ -255,21 +255,21 @@ def like_tips(request, post_id):
     posts = get_object_or_404(Tips, pk=post_id)
     posts.b_like_count += 1
     posts.save()
-    return redirect('community:tips_detail', post_id)
+    return HttpResponseRedirect(reverse('community:tips_detail', args=(post_id,)))
 
 
 def like_qna(request, post_id):
     posts = get_object_or_404(Qna, pk=post_id)
     posts.b_like_count += 1
     posts.save()
-    return redirect('community:qna_detail', post_id)
+    return HttpResponseRedirect(reverse('community:qna_detail', args=(post_id,)))
 
 
 def like_board(request, post_id):
     posts = get_object_or_404(Board, pk=post_id)
     posts.b_like_count += 1
     posts.save()
-    return redirect('community:board_detail', post_id)
+    return HttpResponseRedirect(reverse('community:board_detail', args=(post_id,)))
 
 
 # 삭제
@@ -297,28 +297,60 @@ def tips_edit(request, post_id):
     return render(request, 'community/tips_edit.html', {'posts': posts})
 
 
+def qna_edit(request, post_id):
+    posts = Qna.objects.get(pk=post_id)
+    return render(request, 'community/qna_edit.html', {'posts': posts})
+
+
+def board_edit(request, post_id):
+    posts = Board.objects.get(pk=post_id)
+    return render(request, 'community/board_edit.html', {'posts': posts})
+
+
 # 수정 후 저장
 def tips_modify(request, post_id):
     posts = Tips.objects.get(pk=post_id)
-    title = request.POST.get('b_title')
-    content = request.POST.get('b_content')
-    if title is not None and posts is not None:
-        posts.b_title = title
-        posts.b_content = content
+    if request.method == "POST":
+        posts.b_title = request.POST['title']
+        posts.b_content = request.POST['content']
+
         posts.save()
-        return redirect('community:delete_tips', post_id=post_id)
+        return redirect('community:tips')
     else:
-        return redirect('community:delete_tips', post_id=post_id)
+        return render(request, 'community/tips_edit.html', post_id)
 
 
+def qna_modify(request, post_id):
+    posts = Qna.objects.get(pk=post_id)
+    if request.method == "POST":
+        posts.b_title = request.POST['title']
+        posts.b_content = request.POST['content']
+
+        posts.save()
+        return redirect('community:qna')
+    else:
+        return render(request, 'community/qna_edit.html', post_id)
+
+
+def board_modify(request, post_id):
+    posts = Board.objects.get(pk=post_id)
+    if request.method == "POST":
+        posts.b_title = request.POST['title']
+        posts.b_content = request.POST['content']
+
+        posts.save()
+        return redirect('community:board')
+    else:
+        return render(request, 'community/board_edit.html', post_id)
+
+
+# 병원검색
 def hospital(request):
     return render(request, 'community/hospital.html')
 
 
+# 보호동물 입양
 def shelter(request):
-    #    a_serch = animal_serch.object.all()
-    #    context = {'animal_serch': animal_serch}
-    #    return render(request, 'animal/animal.html', context)
 
     url = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic'
 
@@ -329,8 +361,6 @@ def shelter(request):
         'upr_cd': '6110000',
         'numOfRows': 7500
     }
-
-    # root = elementTree.fromstring (request.get(url, verify=False).text)
 
     response = requests.get(url, params=payload)
 
@@ -370,11 +400,5 @@ def shelter(request):
     context = {'df2': result,
                # 'data': data
                }
-
-    #    return HttpResponse(json.dumps(df2, ensure_ascii=False),
-    #                    content_type="application/json")
-
-    #    return HttpResponse(df2,
-    #                    content_type="application/json; charset=utf8")
 
     return render(request, 'community/shelter.html', context)
